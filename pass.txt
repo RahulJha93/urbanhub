@@ -1,0 +1,24 @@
+roVimHbxCjibWBsQ
+const keyword = req.query.keyword;
+  // console.log(keyword);
+  let product;
+  if (!keyword) {
+    return res.status(400).json({ error: "Keyword parameter is required" });
+  } else {
+    const query = {
+      name: {
+        $regex: keyword,
+        $options: "i",
+      },
+    };
+    product = await Product.find(query);
+    // console.log(product);
+  }
+  if (product.length===0) {
+    return res.status(400).json({ message: "No Product Find " });
+  } 
+  else {
+    return res.status(200).json({
+      product,
+    });
+  }
