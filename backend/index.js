@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middleware/errorMiddleware.js");
@@ -14,12 +15,19 @@ process.on("uncaughtException", (err)=>{
 
 // console.log(hello);
 
+
 const connectDB = require("./config/dbConnection.js");
 
 const app = express();
 const port = process.env.PORT;
 
+
 connectDB();
+app.use(cors({
+  origin: 'http://localhost:8000',
+  credentials: true, // If you're using cookies or sessions
+  useSuccessStatus: 200
+}));
 app.use(express.json());
 app.use(cookieParser());
 

@@ -14,13 +14,10 @@ import { Input } from "@/components/ui/input"
 
 const Header = () => {
   return (
-    <section className="px-[40px] pt-[3px] ">
+    <section className="pt-[3px] sm:px-[40px] px-[20px] ">
       <nav className="flex justify-between items-center">
         <a href="" className="font-bold">UrbanHub</a>
-        {/* <div className="flex items-center">
-        <i class="ri-search-line"></i> */}
-        <Input type="search"  placeholder="Search . . ." className="w-96" />
-        {/* </div> */}
+        <Input type="search"  placeholder="Search . . ." className="w-96  hidden md:block lg:block " />
         <div className="flex gap-4 items-center">
         <i class="ri-shopping-bag-line text-[2rem]"></i>
           <DropdownMenu>
@@ -30,9 +27,9 @@ const Header = () => {
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>Rahul (User)</DropdownMenuLabel>
-              <DropdownMenuSeparator />
+            <DropdownMenuContent >
+              <DropdownMenuLabel className="sm:pt-[0.375rem] pt-[0.1rem]">Rahul (User)</DropdownMenuLabel>
+              <DropdownMenuSeparator/>
               <DropdownMenuItem>Dashboard</DropdownMenuItem>
               <DropdownMenuItem>Order</DropdownMenuItem>
               <DropdownMenuItem>Profile</DropdownMenuItem>
