@@ -4,7 +4,7 @@ const ErrorHandler = require("../utils/errorHandler.js");
 const asyncHandler = require("express-async-handler");
 
 //display all products => api/v1/products
-const getProducts = async (req, res) => {
+const getProducts = asyncHandler(async (req, res) => {
   const resPerPage = 4;
 
   const apiFilters = new APIFilters(Product, req.query).search().filters();
@@ -19,7 +19,7 @@ const getProducts = async (req, res) => {
     filteredProductCount,
     products,
   });
-};
+});
 
 // create new products => api/v1/admin/newproducts
 const newProducts = asyncHandler(async (req, res) => {

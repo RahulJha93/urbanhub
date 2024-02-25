@@ -23,11 +23,7 @@ const port = process.env.PORT;
 
 
 connectDB();
-app.use(cors({
-  origin: 'http://localhost:8000',
-  credentials: true, // If you're using cookies or sessions
-  useSuccessStatus: 200
-}));
+// app.use(cors({origin: 'http://localhost:5173'}));
 app.use(express.json());
 app.use(cookieParser());
 
