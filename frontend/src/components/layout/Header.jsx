@@ -10,13 +10,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input"
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
   return (
     <section className="pt-[3px] sm:px-[40px] px-[20px] ">
       <nav className="flex justify-between items-center">
-        <a href="" className="font-bold">UrbanHub</a>
+        <Link to="/" className="font-bold">UrbanHub</Link>
         <Input type="search"  placeholder="Search . . ." className="w-96  hidden md:block lg:block " />
         <div className="flex gap-4 items-center">
         <i class="ri-shopping-bag-line text-[2rem]"></i>
@@ -36,7 +37,7 @@ const Header = () => {
               <DropdownMenuItem className="text-[red]">Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button>Login</Button>
+          <Link to="/login"><Button>Login</Button></Link>
         </div>
       </nav>
     </section>

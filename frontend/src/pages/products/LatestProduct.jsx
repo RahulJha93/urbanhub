@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetProductsQuery } from "@/redux/api/productsApi";
-import Pcard from "../../../components/card/Pcard";
+import Pcard from "../../components/card/Pcard";
 
 const LatestProduct = () => {
   const { data, error, isLoading } = useGetProductsQuery();
