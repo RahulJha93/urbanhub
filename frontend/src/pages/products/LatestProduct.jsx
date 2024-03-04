@@ -10,7 +10,7 @@ const LatestProduct = () => {
       <h1 className="text-2xl mb-5">LatestProduct</h1>
       <div className="flex justify-between flex-wrap">
         {data?.products?.map((e) => {
-          return <Pcard product={e} />;
+          return <Pcard product={e} />
         })}
       </div>
     </>

@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <section className="pt-[3px] sm:px-[40px] px-[20px] ">
+    <section className="pt-[3px] sm:px-[40px] px-[20px] shadow">
       <nav className="flex justify-between items-center">
         <Link to="/" className="font-bold">UrbanHub</Link>
         <Input type="search"  placeholder="Search . . ." className="w-96  hidden md:block lg:block " />
