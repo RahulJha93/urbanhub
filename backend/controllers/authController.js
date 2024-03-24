@@ -13,6 +13,10 @@ const registerUser = asyncHandler(async (req, res, next) => {
   const { name, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
+  if(password.length < 6) {
+    return next(new ErrorHandler("Please Enter Password greater than 6 ", 400));
+  }
+
   const user = await User.create({
     name,
     email,
@@ -39,7 +43,10 @@ const loginUser = asyncHandler(async (req, res, next) => {
   if (!passwordMatch) {
     return next(new ErrorHandler("Invalid Email or Password", 401));
   }
+  
   sendToken(user, 200, res);
+
+
 });
 
 //logout a user => api/v1/logout
@@ -134,6 +141,7 @@ const resetPassword = asyncHandler(async (req, res, next) => {
 //Get current user profiles =>/api/v1/me
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req?.user?.id);
+  
 
   res.status(200).json({
     user,

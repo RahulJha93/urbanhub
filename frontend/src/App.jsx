@@ -6,9 +6,13 @@ import { Toaster } from "@/components/ui/sonner";
 import ProductItems from "./pages/products/ProductItems";
 import Login from "./pages/Authentication/Login";
 import Register from "./pages/Authentication/Register";
+import DemoFile from "./DemoFile"
+import React, { useEffect } from "react";
+import axios from 'axios';
 
 
 function App() {
+ 
   return (
     <BrowserRouter>
       <Toaster />
@@ -18,8 +22,9 @@ function App() {
         <Route path="/product/:id" element={<ProductItems />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/demofile" element={<DemoFile />} />
       </Routes>
-      {/* <Footer/> */}
+      <Footer/>
     </BrowserRouter>
   );
 }

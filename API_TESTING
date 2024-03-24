@@ -1,0 +1,478 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ECOMMERCE",
+    "dateExported": "2024-03-07T17:54:51.849Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "PRODUCTS",
+            "containerId": "",
+            "created": "2024-01-08T18:22:42.008Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "AUTH",
+            "containerId": "",
+            "created": "2024-01-21T10:32:20.861Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "668568f8-0029-4602-bb60-741e408755f6",
+            "name": "ORDER",
+            "containerId": "",
+            "created": "2024-02-05T19:58:39.529Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "8215e52e-b914-4b86-a64d-6d530e1341fb",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "GET ALL PRODUCTS",
+            "url": "{{DOMAIN}}/api/v1/products",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-01-08T18:23:14.841Z",
+            "modified": "2024-02-23T12:32:35.625Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "price[gte]",
+                    "value": "100",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "ratings[gte]",
+                    "value": "4",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "65854f8c-2475-44b1-9a32-9021195cd1de",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "CREATE NEW PRODUCTS",
+            "url": "{{DOMAIN}}/api/v1/admin/newproducts",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-01-15T11:16:18.100Z",
+            "modified": "2024-02-16T18:30:20.136Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"CAN USB2 FD Adapter (GC-CAN-USB-FD)\",\n    \"price\": 45.89,\n    \"description\":\n      \"Ultra-fast cards (2) to take better pictures and Full HD videos (1) with your compact to mid-range point-and-shoot\",\n    \"ratings\": 4.5,\n    \"images\": [\n      {\n        \"public_id\": \"shopit/demo/nkkjkta63uiazppzkmjf\",\n        \"url\": \"http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/nkkjkta63uiazppzkmjf.jpg\"\n      },\n      {\n       \"public_id\": \"shopit/demo/hz1iwdqzrvxtfxincvju\",\n        \"url\": \"http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/hz1iwdqzrvxtfxincvju.jpg\"\n      },\n      {\n        \"public_id\": \"shopit/demo/oc2dvvkxyxukc13y9pjv\",\n        \"url\": \"http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/oc2dvvkxyxukc13y9pjv.jpg\"\n      }\n    ],\n    \"category\": \"Electronics\",\n    \"seller\": \"Amazon\",\n    \"stock\": 50,\n    \"noOfReviews\": 32,\n    \"reviews\": []\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "83da4ccf-e056-489c-9f3f-6837d9eee52e",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "SEARCH BY ID",
+            "url": "{{DOMAIN}}/api/v1/products/65a54042ecd65541ba63071a",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-01-15T17:39:28.584Z",
+            "modified": "2024-02-16T19:38:04.855Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "33fbb48b-5307-4fa7-bdd5-8b41fd85e6c8",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "UPDATE PRODUCTS",
+            "url": "{{DOMAIN}}/api/v1/admin/products/65a54042ecd65541ba63071e",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-01-16T13:49:42.631Z",
+            "modified": "2024-01-16T13:53:19.513Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"SanDisk Ultra 128GB SDXC UHS-I Memory Card up to 200MB/s\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "62466ed2-b0dc-43d6-b28f-b7f53e69a69e",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "DELETE PRODUCTS",
+            "url": "{{DOMAIN}}/api/v1/admin/products/65a54042ecd65541ba63071e",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-01-16T14:33:20.340Z",
+            "modified": "2024-01-16T14:34:43.847Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7e2f483a-8f53-44d7-8992-c77bc502b250",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "REGISTER USER",
+            "url": "{{DOMAIN}}/api/v1/register",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-01-21T10:32:29.737Z",
+            "modified": "2024-01-30T17:48:35.311Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"admin7\",\n  \"email\":\"admin7@gmail.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "61adf99d-471f-4c8d-9cb4-ffd180071fa7",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "LOGIN USER",
+            "url": "{{DOMAIN}}/api/v1/login",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2024-01-21T11:27:31.729Z",
+            "modified": "2024-01-30T18:25:23.344Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"admin@gmail.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fb4e7641-658c-40e7-ad40-6954579efc9d",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "LOGOUT",
+            "url": "{{DOMAIN}}/api/v1/logout",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-01-22T16:54:00.319Z",
+            "modified": "2024-01-22T16:54:49.407Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "dd9dd88d-c7a0-4aae-bc77-56634866a260",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "FOGOT PASSWORD",
+            "url": "{{DOMAIN}}/api/v1/password/forgot",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-01-25T14:24:54.827Z",
+            "modified": "2024-01-25T15:55:06.628Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"rahul.sahyogcollege@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "27cf7a39-70db-4e0c-aff1-39ae9f42e113",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "RESET PASSWORD",
+            "url": "{{DOMAIN}}/api/v1/password/reset/9010a4f5c57353be5eb2e6243a744cb4b57c2418",
+            "method": "PUT",
+            "sortNum": 120000,
+            "created": "2024-01-25T16:54:46.709Z",
+            "modified": "2024-01-25T17:15:32.624Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\":\"123456789\",\n  \"confirmPassword\":\"123456789\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b17fb4ba-922e-422f-b315-9d5383bf30d7",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "GET USER PROFILE",
+            "url": "{{DOMAIN}}/api/v1/me",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2024-01-30T17:19:10.598Z",
+            "modified": "2024-01-30T17:19:51.997Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "328c8d52-8221-457b-9632-2989724c685f",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "PASSWORD UPDATE",
+            "url": "{{DOMAIN}}/api/v1/password/update",
+            "method": "PUT",
+            "sortNum": 140000,
+            "created": "2024-01-30T17:30:29.489Z",
+            "modified": "2024-01-30T17:49:21.817Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"oldPassword\":\"123456\",\n  \"newPassword\":\"654321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fa6211e0-720a-4af8-8ab1-fe0369980ac4",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "GET ALL USERS",
+            "url": "{{DOMAIN}}/api/v1/admin/users",
+            "method": "GET",
+            "sortNum": 145000,
+            "created": "2024-01-30T19:01:16.842Z",
+            "modified": "2024-02-02T17:47:31.112Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0be6eca2-94ae-4908-91e0-9335724dbbe2",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "UPDATE PROFILE",
+            "url": "{{DOMAIN}}/api/v1/me/update",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-01-30T18:20:23.134Z",
+            "modified": "2024-01-30T18:22:06.520Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"admin7new\",\n  \"email\":\"admin7@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "908a98ed-ef58-45fc-8854-0fb1ab084814",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "GET USER DETAILS",
+            "url": "{{DOMAIN}}/api/v1/admin/users/65acf35a2324415f740cf53d",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2024-01-30T19:01:39.285Z",
+            "modified": "2024-02-02T17:51:18.783Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "998d1742-d4f7-4b03-91a3-46b3a59e83ee",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "UPDATE USER",
+            "url": "{{DOMAIN}}/api/v1/admin/users/65acf35a2324415f740cf53d",
+            "method": "DELETE",
+            "sortNum": 180000,
+            "created": "2024-02-02T17:40:20.878Z",
+            "modified": "2024-02-02T18:06:30.100Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"RAHUL JHA\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2220fd00-0d99-43f4-9549-1ec97b3bb18d",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "af0a266a-b281-40f8-8ee2-92f5bebcc35e",
+            "name": "DELETE USER",
+            "url": "",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2024-02-02T17:40:39.827Z",
+            "modified": "2024-02-02T17:40:39.827Z",
+            "headers": []
+        },
+        {
+            "_id": "347f62f4-a1ef-44f8-a3eb-13cd522da8e3",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "668568f8-0029-4602-bb60-741e408755f6",
+            "name": "CREATE NEW ORDER",
+            "url": "{{DOMAIN}}/api/v1/orders/new",
+            "method": "POST",
+            "sortNum": 200000,
+            "created": "2024-02-05T19:58:49.517Z",
+            "modified": "2024-02-16T19:33:05.946Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"shippingInfo\": {\n    \"address\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"phoneNo\": \"123-456-7890\",\n    \"pinCode\": \"10001\",\n    \"country\": \"USA\"\n  },\n  \"orderItems\": [\n    {\n      \"name\": \"SanDisk Ultra 128GB SDXC UHS-I Memory Card up to 80MB/s\",\n      \"quantity\": 2,\n      \"image\": \"http://res.cloudinary.com/udemy-courses/image/upload/v1689961785/shopit/products/demo/b9m0ddogmkd8xnypmh1l.jpg\",\n      \"price\": \"39.99\",\n      \"product\": \"65a54042ecd65541ba63071a\"\n    }\n  ],\n  \"paymentsMethod\": \"COD\",\n  \"paymentInfo\": {\n    \"id\": \"payment_id_here\",\n    \"status\": \"Not Paid\"\n  },\n  \"itemsPrice\": 79.97,\n  \"taxAmount\": 7.99,\n  \"shippingAmount\": 5.99,\n  \"totalAmount\": 93.95\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c441949a-bf58-4869-a2f2-7496e69cb910",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "668568f8-0029-4602-bb60-741e408755f6",
+            "name": "CURRENT USER( LOGINED USER) ORDER DETAILS",
+            "url": "{{DOMAIN}}/api/v1/me/orders",
+            "method": "GET",
+            "sortNum": 210000,
+            "created": "2024-02-05T20:25:35.030Z",
+            "modified": "2024-02-05T20:36:42.144Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b1ecfe82-89f7-4f7f-be76-3d7cb6e7f393",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "668568f8-0029-4602-bb60-741e408755f6",
+            "name": "GET ORDER DETAILS",
+            "url": "{{DOMAIN}}/api/v1/orders/65cfa9bcebe69a4246f050d5",
+            "method": "GET",
+            "sortNum": 220000,
+            "created": "2024-02-05T20:32:47.370Z",
+            "modified": "2024-02-16T18:54:59.418Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b47835ab-90af-4d8e-9ca9-9df9338febf8",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "668568f8-0029-4602-bb60-741e408755f6",
+            "name": "GET ALL ORDER (ADMIN)",
+            "url": "{{DOMAIN}}/api/v1/admin/orders",
+            "method": "GET",
+            "sortNum": 230000,
+            "created": "2024-02-16T18:15:27.384Z",
+            "modified": "2024-02-16T18:25:05.366Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1e45acbf-5976-48d8-a49d-6a4451591a38",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "668568f8-0029-4602-bb60-741e408755f6",
+            "name": "UPDATE ORDER DETAILS - ADMIN",
+            "url": "{{DOMAIN}}/api/v1/admin/orders/65cfb871c96b77ff0bddda41",
+            "method": "PUT",
+            "sortNum": 240000,
+            "created": "2024-02-16T18:17:53.430Z",
+            "modified": "2024-02-16T19:35:06.963Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"status\":\"shipped\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ba2044e9-4f6f-4a68-9b9e-a92e08c5c38f",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "668568f8-0029-4602-bb60-741e408755f6",
+            "name": "DELETE A ORDER - ADMIN",
+            "url": "{{DOMAIN}}/api/v1/admin/orders/65cfb871c96b77ff0bddda41",
+            "method": "DELETE",
+            "sortNum": 250000,
+            "created": "2024-02-17T09:50:30.300Z",
+            "modified": "2024-02-17T09:51:11.814Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "04acec76-0e2d-49de-830c-f43a85c3fad7",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "CREATE/UPDATE REVIEWS",
+            "url": "{{DOMAIN}}/api/v1/reviews",
+            "method": "PUT",
+            "sortNum": 270000,
+            "created": "2024-02-23T12:31:51.905Z",
+            "modified": "2024-02-23T12:52:19.520Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"rating\":\"1.5\",\n  \"comment\":\"not working product\",\n  \"productId\":\"65a54042ecd65541ba630726\"\n  \n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "534250eb-e5da-4bdb-8ca5-7b8654c4d5c1",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "GET PRODUCT REVIEWS",
+            "url": "{{DOMAIN}}/api/v1/reviews?id=65a54042ecd65541ba630726",
+            "method": "GET",
+            "sortNum": 280000,
+            "created": "2024-02-23T13:07:30.333Z",
+            "modified": "2024-02-23T13:10:11.545Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "65a54042ecd65541ba630726",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "c8bdaca6-5c1d-4b02-bb01-6eb6a99cff4d",
+            "colId": "141eb5a9-0186-4b98-a31b-3a90ef56f9e1",
+            "containerId": "741be992-ee43-4f96-a699-1d0357fb3752",
+            "name": "DELETE REVIEW -ADMIN",
+            "url": "{{DOMAIN}}/api/v1/admin/reviews?id=65a54042ecd65541ba63071a",
+            "method": "DELETE",
+            "sortNum": 290000,
+            "created": "2024-02-23T13:35:07.753Z",
+            "modified": "2024-02-23T13:45:44.308Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "65a54042ecd65541ba63071a",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ]
+}

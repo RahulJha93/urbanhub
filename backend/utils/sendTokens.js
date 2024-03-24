@@ -10,11 +10,15 @@ const sendToken = (user, statusCode, res) => {
       Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    // secure: process.env.NODE_ENV === 'PRODUCTION',
+    credentials:"include"
+
   };
 
   res.status(statusCode).cookie("token", token, options).json({
     token,
-  });
+  })
+  // res.session.token = token;
 };
 
 module.exports = sendToken;

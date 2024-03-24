@@ -23,7 +23,7 @@ const port = process.env.PORT;
 
 
 connectDB();
-app.use(cors({origin: 'http://localhost:5173'}));
+app.use(cors({origin: true, credentials: true,optionSuccessStatus:200}));
 app.use(express.json());
 app.use(cookieParser());
 

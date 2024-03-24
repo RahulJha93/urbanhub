@@ -1,53 +1,71 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
   return (
-    <section className='px-[40px] pt-[3px]'>
-      <div className='flex'>
+    <section className="px-[40px] pt-[3px] bg-[#0F172A] text-[white]">
+      <div className="grid sm:grid-cols-3 md:grid-cols-5 grid-cols-1">
         <div>
-          <h1 className='font-bold'>Brands</h1>
-          <p>Adidas</p>
-          <p>Puma</p>
-          <p>Reebok</p>
-          <p>Nike</p>
+          <h1 className="font-bold mb-[0.5rem]">Brands</h1>
+          {[["Adidas", "adidas"], ["Puma", "puma"], ["Reebok", "reebok"], ["Nike", "nike"]].map(([title, url]) => (
+            <p className="text-gray-500 font-medium" key={url}>{title}</p>
+          ))}
         </div>
 
         <div>
-        <h1 className='font-bold'>Company</h1>
-          <p>About Us</p>
-          <p>Carrer</p>
-          <p>Find a store</p>
-          <p>Rules and terms</p>
-          <p>Sitemap</p>  
-        </div>
-        <div>
-
-        <h1 className='font-bold'>Help</h1>
-          <p>Conatct us</p>
-          <p>Money Refund</p>
-          <p>Order Status</p>
-          <p>Shipping info</p>
-          <p>Open dispute</p>  
+          <h1 className="font-bold mb-[0.5rem]">Company</h1>
+          {[
+            ["About Us", "about"],
+            ["Carrer", "career"],
+            ["Find a store", "store"],
+            ["Rules and terms", "terms"],
+          ].map(([title, url]) => (
+            <p className="text-gray-500 font-medium" key={url}>{title}</p>
+          ))}
         </div>
 
         <div>
-        <h1 className='font-bold'>Account</h1>
-          <p>User Login</p>
-          <p>User Register</p>
-          <p>Account Setting</p>
-          <p>My Orders</p> 
+          <h1 className="font-bold mb-[0.5rem]">Help</h1>
+          {[
+            ["Contact us", "contact"],
+            ["Money Refund", "refund"],
+            ["Order Status", "status"],
+            ["Shipping info", "shipping"],
+          ].map(([title, url]) => (
+            <p className="text-gray-500 font-medium" key={url}>{title}</p>
+          ))}
         </div>
 
         <div>
-        <h1 className='font-bold'>Social</h1>
-          <p><i class="ri-facebook-circle-fill"></i>Facebook</p>
-          <p><i class="ri-twitter-fill"></i>Twitter</p>
-          <p><i class="ri-instagram-fill"></i>Instagram</p>
-          <p><i class="ri-youtube-fill"></i>Youtube</p>
+          <h1 className="font-bold mb-[0.5rem]">Account</h1>
+          {[
+            ["User Login", "login"],
+            ["User Register", "register"],
+            ["Account Setting", "setting"],
+            ["My Orders", "orders"],
+          ].map(([title, url]) => (
+            <p className="text-gray-500 font-medium" key={url}>{title}</p>
+          ))}
+        </div>
+
+        <div>
+          <h1 className="font-bold mb-[0.5rem]">Social</h1>
+
+          <p className="text-gray-500 font-medium">
+            <i className="ri-facebook-circle-fill"></i> Facebook
+          </p>
+          <p className="text-gray-500 font-medium">
+            <i className="ri-twitter-fill"></i> Twitter
+          </p>
+          <p className="text-gray-500 font-medium">
+            <i className="ri-instagram-fill"></i> Instagram
+          </p>
+          <p className="text-gray-500 font-medium">
+            <i className="ri-youtube-fill"></i> Youtube
+          </p>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default Footer;
