@@ -26,9 +26,7 @@ const Header = () => {
 
   const logoutHandler= (e)=>{
     logout();
-    // setUser(null);
-    // setIsAuthenticated(false);
-    navigate("/", { replace: true });
+    navigate(0);
   }
 
   return (
@@ -57,9 +55,9 @@ const Header = () => {
                  { user?.name}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Dashboard</DropdownMenuItem>
-                <DropdownMenuItem>Order</DropdownMenuItem>
-                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem><Link to="/me/dashboard">Dashboard</Link></DropdownMenuItem>
+                <DropdownMenuItem><Link to="/me/order">Order</Link></DropdownMenuItem>
+                <DropdownMenuItem><Link to="/me/profile">Profile</Link></DropdownMenuItem>
                 <DropdownMenuItem className="text-[red]" onClick={logoutHandler}>
                   Logout
                 </DropdownMenuItem>

@@ -8,6 +8,8 @@ const LatestProduct = () => {
   const [appear,setAppear] = useState("0");
 
   useEffect(() => {
+   //to be fix later
+
     if (!data) {
       if(appear=="1"){
         console.log("After next turn :");

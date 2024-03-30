@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setIsAuthenticated, setUser } from "../features/userSlice";
+import { setIsAuthenticated, setUser,setLoading } from "../features/userSlice";
 
 export const userApi = createApi({
   reducerPath: "userApi",
@@ -9,6 +9,7 @@ export const userApi = createApi({
       "Content-Type": "application/json",
     },
     credentials: "include",
+    tagTypes: ["User"],
   }),
   endpoints: (builder) => ({
     getMe: builder.query({
@@ -19,12 +20,25 @@ export const userApi = createApi({
           const { data } = await queryFulfilled;
           dispatch(setUser(data));
           dispatch(setIsAuthenticated(true));
+          dispatch(setLoading(false));
         } catch (err) {
+          dispatch(setLoading(false));
           console.log(err);
         }
       },
+      providesTags: ["User"],
+    }),
+    updateProfile: builder.mutation({
+      query(body) {
+        return {
+          url: "/me/update",
+          method: "PUT",
+          body,
+        };
+      },
+      invalidatesTags: ["User"],
     }),
   }),
 });
 
-export const { useGetMeQuery } = userApi;
+export const { useGetMeQuery, useUpdateProfileMutation } = userApi;

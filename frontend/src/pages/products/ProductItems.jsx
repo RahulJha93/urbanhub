@@ -9,7 +9,7 @@ import { toast, Toaster } from "sonner";
 const ProductItems = () => {
   const params = useParams();
   const { data, isLoading, error,isError } = useGetProductsDetailsQuery(params?.id);
-  console.log(data);
+  // console.log(data);
   useEffect(() => {
     if (isError) {
       toast.error(error?.data?.message);
