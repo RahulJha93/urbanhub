@@ -451,7 +451,7 @@ const getResetPasswordEmailTemplate = (user,resetUrl) => `
                   href="https://shopit.com"
                   class="f-fallback email-masthead_name"
                 >
-                  ShopIT
+                  UrbanHub
                 </a>
               </td>
             </tr>
@@ -477,7 +477,7 @@ const getResetPasswordEmailTemplate = (user,resetUrl) => `
                         <h1>Hi ${user},</h1>
                         <p>
                           You recently requested to reset your password for your
-                          ShopIT account. Use the button below to reset it.
+                          UrbanHub account. Use the button below to reset it.
                           <strong
                             >This password reset is only valid for the next 30
                             minutes.</strong
@@ -505,7 +505,7 @@ const getResetPasswordEmailTemplate = (user,resetUrl) => `
                                   <td align="center">
                                     <a
                                       href="${resetUrl}"
-                                      class="f-fallback button button--green"
+                                      class="f-fallback button color:#272E3F"
                                       target="_blank"
                                       >Reset your password</a
                                     >
@@ -521,7 +521,7 @@ const getResetPasswordEmailTemplate = (user,resetUrl) => `
                           <a href="{{support_url}}">contact support</a> if you
                           have questions.
                         </p>
-                        <p>Thanks, <br />The ShopIT team</p>
+                        <p>Thanks, <br />The UrbanHub team</p>
 
                         <table class="body-sub" role="presentation">
                           <tr>
@@ -532,7 +532,7 @@ const getResetPasswordEmailTemplate = (user,resetUrl) => `
                                 browser.
                               </p>
                               <p class="f-fallback sub">
-                                <a href="${resetUrl}">{resetUrl}</a>
+                                <a href="{resetUrl}">${resetUrl}</a>
                               </p>
                             </td>
                           </tr>
@@ -556,7 +556,7 @@ const getResetPasswordEmailTemplate = (user,resetUrl) => `
                   <tr>
                     <td class="content-cell" align="center">
                       <p class="f-fallback sub align-center">
-                        ShopIT
+                        UrbanHub
                         <br />1234 Street Rd. <br />Suite 1234
                       </p>
                     </td>

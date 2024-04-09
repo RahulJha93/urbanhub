@@ -70,7 +70,7 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <Link to="/forget">
+              <Link to="/password/forget">
                 <p className="text-[0.8rem] font-medium ">Forget Password?</p>
               </Link>
             </div>

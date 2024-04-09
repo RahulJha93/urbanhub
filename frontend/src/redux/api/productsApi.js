@@ -4,6 +4,7 @@ export const productApi = createApi({
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_BACKEND_URL}/api/v1`,
+    // baseUrl: "/api",
     
   }),
   endpoints: (builder) => ({

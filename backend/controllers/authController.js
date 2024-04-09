@@ -7,6 +7,7 @@ const sendToken = require("../utils/sendTokens.js");
 const sendMail = require("../utils/sendMail.js");
 const getResetPasswordTemplate = require("../utils/emailTemplate.js");
 const crypto = require("crypto");
+const uploadFiles = require("../utils/cloudinary.js");
 
 // create a new user => api/v1/register
 const registerUser = asyncHandler(async (req, res, next) => {
@@ -62,6 +63,21 @@ const logout = asyncHandler(async (req, res) => {
   });
 });
 
+//upload user avatar => api/v1/me/upload_avatar
+const uploadAvatar = asyncHandler(async (req, res) => {
+  const avatarResponse = await uploadFiles(req.body.user,"URBANHUB-ECOMMERCE/AVATARS");
+
+  const user = await User.findByIdAndUpdate(req?.user?._id,{
+    avatar:avatarResponse,
+  });
+
+  res.status(200).json({
+    user,
+  });
+
+  
+});
+
 //forgot password
 const forgotPassword = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
@@ -75,11 +91,11 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
   // console.log(resetToken);
 
   // create reset password url
-  const resetUrl = `${process.env.FRONTEND_URL}/api/v1/password/reset/${resetToken}`;
+  const resetUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
   const message = getResetPasswordTemplate(user?.name, resetUrl);
   // console.log(message);
-  console.log(user);
+  // console.log(user);
   try {
     await sendMail({
       email: user.email,
@@ -245,4 +261,5 @@ module.exports = {
   userDetails,
   updateUser,
   deleteUser,
+  uploadAvatar,
 };

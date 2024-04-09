@@ -15,20 +15,20 @@ const Pcard = ({ product }) => {
     const productPrice = product.price*83;
   return (
     <>
-      <Card className="w-[280px] h-auto mb-8">
-        <CardHeader>
+      <Card className="w-[243px] h-[308px] mb-8">
+        <CardHeader className="p-0">
           <CardTitle>
             <img
             //   src={product.images[0].url}
-            src="src\assets\image\tshirt1.jfif"
+            src={product?.images[0]?.url}
               alt=""
-              className="w-[280px] h-[200px] p-2"
+              className="w-[241px] h-[170px] object-fit rounded-xl"
             />
           </CardTitle>
           {/* <CardDescription>Card Description</CardDescription> */}
         </CardHeader>
         <CardContent className="p-2">
-          <p className="font-semibold">
+          <p className="font-semibold text-[14px]">
             <Link to={`/product/${product._id}`}>({product.name})</Link>
           </p>
           <div className="flex gap-2 mb-2">
@@ -37,15 +37,15 @@ const Pcard = ({ product }) => {
             starRatedColor="#14958F"
             numberOfStars={5}
             name="rating"
-            starDimension="20px"
+            starDimension="14px"
            starSpacing="1px"
           />
-          <p className="text-black font-medium">({product.numOfReviews})</p>
+          <p className="text-black font-medium text-[14px]">({product.numOfReviews})</p>
           </div>
-          <p className="font-semibold"> {`Rs ${productPrice}`}</p>
+          <p className="font-semibold text-[14px]"> {`Rs ${productPrice}`}</p>
         </CardContent>
-        <CardFooter className="p-2">
-          <Button>
+        <CardFooter className="p-2 justify-end">
+          <Button className="mt-[-22px]">
             <Link to={`/product/${product._id}`}>View Details </Link>
           </Button>
         </CardFooter>

@@ -12,7 +12,8 @@ const {
   allUsers,
   userDetails,
   updateUser,
-  deleteUser
+  deleteUser,
+  uploadAvatar
 } = require("../controllers/authController.js");
 const { isUserAuthenticated,authroziedRole } = require("../middleware/auth.js");
 
@@ -20,11 +21,11 @@ const { isUserAuthenticated,authroziedRole } = require("../middleware/auth.js");
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 router.route("/logout").get(logout);
-router.route("/password/forgot").post(forgotPassword);
+router.route("/password/forget").put(forgotPassword);
 router.route("/password/reset/:token").put(resetPassword);
 router.route("/me").get(isUserAuthenticated, getUserProfile);
 router.route("/me/update").put(isUserAuthenticated, updateprofile);
-// router.route("/me/uploadAvatar").put(isUserAuthenticated, updateprofile);
+router.route("/me/uploadAvatar").put(isUserAuthenticated, uploadAvatar);
 router.route("/password/update").put(isUserAuthenticated, updatePassword);
 
 router.route("/admin/users").get(isUserAuthenticated,authroziedRole('admin'), allUsers);

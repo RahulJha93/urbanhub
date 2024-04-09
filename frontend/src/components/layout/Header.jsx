@@ -16,7 +16,7 @@ import { useGetMeQuery } from "@/redux/api/userApi";
 import {useLazyLogoutQuery} from "@/redux/api/authApi"; 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setIsAuthenticated, setUser } from "@/redux/features/userSlice";
+import { Navigate } from "react-router-dom";
 
 const Header = () => {
   const { isLoading } = useGetMeQuery();

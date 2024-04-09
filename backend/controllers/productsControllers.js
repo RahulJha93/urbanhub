@@ -24,7 +24,7 @@ const getProducts = asyncHandler(async (req, res) => {
 // create new products => api/v1/admin/newproducts
 const newProducts = asyncHandler(async (req, res) => {
   req.body[0].user = req.user._id;
-  console.log(req.body);
+  // console.log(req.body);
   const product = await Product.create(req.body);
 
   return res.status(200).json({
