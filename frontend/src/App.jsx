@@ -15,6 +15,8 @@ import ProtectedRoute from "./pages/Authentication/ProtectedRoute";
 import ForgetPassword from "./pages/Authentication/ForgetPassword";
 import ResetPassword from "./pages/Authentication/ResetPassword";
 import ExResetPass from "./pages/Authentication/ExResetPass";
+import Cart from "./pages/Cart/Cart";
+import Shipping from "./pages/Cart/Shipping";
 
 function App() {
   return (
@@ -38,6 +40,15 @@ function App() {
         <Route path="/password/forget" element={<ForgetPassword />} />
         {/* <Route path="/password/reset/:token" element={<ResetPassword />} /> */}
         <Route path="/password/reset/:token" element={<ExResetPass />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/shipping"
+          element={
+            <ProtectedRoute>
+              <Shipping />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>

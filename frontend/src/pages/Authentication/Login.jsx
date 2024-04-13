@@ -24,6 +24,7 @@ const Login = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
+
     if(isAuthenticated){
       navigate("/");
     }
@@ -33,9 +34,9 @@ const Login = () => {
     }
     if (error) {
       toast.error(error?.data?.message);
-    }
+    };
   
-  }, [error,isAuthenticated]);
+  },[isAuthenticated, data, error]);
 
   const submitHandler = (e) => {
     e.preventDefault();

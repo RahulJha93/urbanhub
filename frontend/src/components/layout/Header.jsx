@@ -13,21 +13,23 @@ import {
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import { useGetMeQuery } from "@/redux/api/userApi";
-import {useLazyLogoutQuery} from "@/redux/api/authApi"; 
+import { useLazyLogoutQuery } from "@/redux/api/authApi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Header = () => {
   const { isLoading } = useGetMeQuery();
   const [logout] = useLazyLogoutQuery();
-  const { user} = useSelector((state) => state.auth);
-  const navigate = useNavigate()
+  const { user } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
+  const navigate = useNavigate();
 
-  const logoutHandler= (e)=>{
+  const logoutHandler = (e) => {
     logout();
     navigate(0);
-  }
+  };
 
   return (
     <section className="pt-[3px] sm:px-[40px] px-[20px] shadow">
@@ -41,33 +43,53 @@ const Header = () => {
           className="w-96  hidden md:block lg:block "
         />
         <div className="flex gap-4 items-center">
-          <i className="ri-shopping-bag-line text-[2rem]"></i>
+        <Link to="/cart" >
+          <div className="flex ">
+            <i className="ri-shopping-bag-line text-[2rem]"></i>
+            {cartItems.length > 0 ? (
+              <span className="w-5 h-5 ml-[-17px] mb-2 text-[13px] text-center bg-[#FF1493] text-white font-semibold rounded-xl">
+                {cartItems.length}
+              </span>
+            ) : null}{" "}
+          </div>
+          </Link>
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar>
                   <AvatarImage src="src/assets/image/default_avatar.jpg" />
-                  <AvatarFallback>{user?.avatar ? user?.avatar?.url : "no image"} </AvatarFallback>
+                  <AvatarFallback>
+                    {user?.avatar ? user?.avatar?.url : "no image"}{" "}
+                  </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel className="sm:pt-[0.375rem] pt-[0.1rem]">
-                 { user?.name}
+                  {user?.name}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem><Link to="/me/dashboard">Dashboard</Link></DropdownMenuItem>
-                <DropdownMenuItem><Link to="/me/order">Order</Link></DropdownMenuItem>
-                <DropdownMenuItem><Link to="/me/profile">Profile</Link></DropdownMenuItem>
-                <DropdownMenuItem className="text-[red]" onClick={logoutHandler}>
+                <DropdownMenuItem>
+                  <Link to="/me/dashboard">Dashboard</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link to="/me/order">Order</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link to="/me/profile">Profile</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="text-[red]"
+                  onClick={logoutHandler}
+                >
                   Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
             !isLoading && (
-            <Link to="/login">
-              <Button>Login</Button>
-            </Link>
+              <Link to="/login">
+                <Button>Login</Button>
+              </Link>
             )
           )}
         </div>
