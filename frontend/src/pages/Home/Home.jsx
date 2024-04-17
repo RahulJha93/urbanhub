@@ -5,6 +5,7 @@ import MetaData from "@/components/layout/MetaData";
 import { useGetProductsQuery } from "@/redux/api/productsApi";
 import { ColorRing } from "react-loader-spinner";
 import Loader from "@/components/Loader/Loader";
+import Electronics from "../products/Electronics";
 
 const Home = () => {
   const { isLoading, data, error, isError } = useGetProductsQuery();
@@ -16,6 +17,7 @@ const Home = () => {
       <section className="sm:px-[40px] px-[20px] ">
         <Banner />
         <LatestProduct />
+        {/* <Electronics/> */}
 
         {/* <Footer/> */}
       </section>

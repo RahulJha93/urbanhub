@@ -3,6 +3,7 @@ import { useGetProductsQuery } from "@/redux/api/productsApi";
 import Pcard from "../../components/card/Pcard";
 import { toast, Toaster } from "sonner";
 
+
 const LatestProduct = () => {
   const { data, error, isLoading,isError } = useGetProductsQuery();
   const [appear,setAppear] = useState("0");
@@ -29,7 +30,7 @@ const LatestProduct = () => {
 
   return (
     <>
-      <h1 className="text-2xl mb-5">LatestProduct</h1>
+      <h1 className="text-2xl mb-5">Latest Product</h1>
       <div className="flex justify-between flex-wrap">
         {data?.products?.map((e,key) => {
           return <Pcard product={e} key={key} />

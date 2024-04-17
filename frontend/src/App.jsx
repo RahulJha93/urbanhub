@@ -17,6 +17,8 @@ import ResetPassword from "./pages/Authentication/ResetPassword";
 import ExResetPass from "./pages/Authentication/ExResetPass";
 import Cart from "./pages/Cart/Cart";
 import Shipping from "./pages/Cart/Shipping";
+import ConfirmOrder from "./pages/Cart/ConfirmOrder";
+import PaymentMethod from "./pages/Cart/PaymentMethod";
 
 function App() {
   return (
@@ -49,7 +51,23 @@ function App() {
             </ProtectedRoute>
           }
         />
-      </Routes>
+        <Route
+          path="/confirmOrder"
+          element={
+            <ProtectedRoute>
+              <ConfirmOrder />
+            </ProtectedRoute>
+          }
+        />
+      <Route
+          path="/paymentMethod"
+          element={
+            <ProtectedRoute>
+              <PaymentMethod />
+            </ProtectedRoute>
+          }
+        />
+         </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
   );

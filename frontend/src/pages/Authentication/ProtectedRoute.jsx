@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
     return <Loader />;
   }
   if (!isAuthenticated) {
-    toast.error( "Please login first")
+    // toast.error( "Please login first")
     return <Navigate to="/login" replace />;
   }
 

@@ -145,56 +145,56 @@ const data = {
     reviews: [],
   },
   {
-    name: "Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G VR Black",
-    price: 496.95,
-    description:
+    "name": "Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G VR Black",
+    "price": 496.95,
+    "description":
       "You don't need to be a photographer to know a great photo when you see one. And you don't need to be a photographer to take a great photo—you just need the D3500. It's as easy to use as a point-and-shoot, but it takes beautiful DSLR photos and videos that get noticed. It feels outstanding in your hands, sturdy and balanced with controls where you want them. It's compact, durable and versatile, ideal for travel. And it works seamlessly with compatible smartphones, making it easier than ever to share your great photos. Even if you've never picked up a DSLR camera, you can take beautiful pictures with D3500.",
-    ratings: 4.7,
-    images: [
+    "ratings": 4.7,
+    "images": [
       {
-        public_id: "shopit/demo/q6ybe84qlkzwet9qwptz",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/q6ybe84qlkzwet9qwptz.jpg",
+        "public_id": "shopit/demo/q6ybe84qlkzwet9qwptz",
+        "url": "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/q6ybe84qlkzwet9qwptz.jpg",
       },
       {
-        public_id: "shopit/demo/niqqio1faynnscubkkmd",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/niqqio1faynnscubkkmd.jpg",
+        "public_id": "shopit/demo/niqqio1faynnscubkkmd",
+        "url": "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/niqqio1faynnscubkkmd.jpg",
       },
       {
-        public_id: "shopit/demo/dy3nhjgsdgqcnrwf8u2h",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/dy3nhjgsdgqcnrwf8u2h.jpg",
+        "public_id": "shopit/demo/dy3nhjgsdgqcnrwf8u2h",
+        "url": "http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/dy3nhjgsdgqcnrwf8u2h.jpg",
       },
     ],
-    category: "Cameras",
-    seller: "Amazon",
-    stock: 131,
-    numOfReviews: 222,
-    reviews: [],
+    "category": "Cameras",
+    "seller": "Amazon",
+    "stock": 131,
+    "numOfReviews": 222,
+    "reviews": [],
   },
   {
-    name: "Apple MacBook Air (13-inch, 8GB RAM, 256GB SSD Storage) - Space Gray",
-    price: 949.99,
-    description:
+    "name": "Apple MacBook Air (13-inch, 8GB RAM, 256GB SSD Storage) - Space Gray",
+    "price": 949.99,
+    "description":
       "Stunning 13.3-inch Retina display with True Tone technology, Backlit Magic Keyboard and Touch ID, Tenth-generation, Intel Core i3 processor, Intel Iris Plus Graphics, Fast SSD storage, 8GB of memory, Stereo speakers with wider stereo sound",
-    ratings: 4.9,
-    images: [
+    "ratings": 4.9,
+    "images": [
       {
-        public_id: "shopit/demo/jzqaj98nnhy0hcsilx9y",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/jzqaj98nnhy0hcsilx9y.jpg",
+        "public_id": "shopit/demo/jzqaj98nnhy0hcsilx9y",
+        "url": "http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/jzqaj98nnhy0hcsilx9y.jpg",
       },
       {
-        public_id: "shopit/demo/welkq4dgfi5267usmj0n",
+        "public_id": "shopit/demo/welkq4dgfi5267usmj0n",
         url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/welkq4dgfi5267usmj0n.jpg",
       },
       {
-        public_id: "shopit/demo/pabtjloyzenmr6z8klcr",
-        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577600/shopit/demo/pabtjloyzenmr6z8klcr.jpg",
+        "public_id": "shopit/demo/pabtjloyzenmr6z8klcr",
+        "url": "http://res.cloudinary.com/udemy-courses/image/upload/v1698577600/shopit/demo/pabtjloyzenmr6z8klcr.jpg",
       },
     ],
-    category: "Laptops",
-    seller: "Amazon",
-    stock: 0,
-    numOfReviews: 56,
-    reviews: [],
+    "category": "Laptops",
+    "seller": "Amazon",
+    "stock": 0,
+    "numOfReviews": 56,
+    "reviews": [],
   },
   {
     name: "Kauffman Orchards Homegrown McIntosh Apples",

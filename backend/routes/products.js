@@ -8,6 +8,7 @@ const {
   createProductReview,
   getProductReviews,
   deleteProductReview,
+  // getProductByCategory,
 } = require("../controllers/productsControllers.js");
 const router = express.Router();
 const {
@@ -18,6 +19,7 @@ const {
 //public routes or user routes
 
 router.route("/products").get(getProducts);
+// router.route("/products").get(getProductByCategory)
 router.route("/products/:id").get(getProductDetail);
 
 //protected routes or admin routes

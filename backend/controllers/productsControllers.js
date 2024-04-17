@@ -3,6 +3,17 @@ const APIFilters = require("../utils/apiFilter.js");
 const ErrorHandler = require("../utils/errorHandler.js");
 const asyncHandler = require("express-async-handler");
 
+//display product by category name => api/v1/category?elctronics
+// const getProductByCategory = asyncHandler(async(req,res)=>{
+//   const category = req.query.category;
+//   const products = await Product.find({category});
+//   return res.status(200).json({
+//     products,
+//   });
+
+
+// });
+
 //display all products => api/v1/products
 const getProducts = asyncHandler(async (req, res) => {
   const resPerPage = 4;
@@ -164,6 +175,7 @@ const deleteProductReview = asyncHandler(async (req, res, next) => {
 });
 
 module.exports = {
+  // getProductByCategory,
   getProducts,
   newProducts,
   getProductDetail,

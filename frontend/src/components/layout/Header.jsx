@@ -16,8 +16,19 @@ import { useGetMeQuery } from "@/redux/api/userApi";
 import { useLazyLogoutQuery } from "@/redux/api/authApi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+// import { Navigate } from "react-router-dom";
+// import { HiOutlineShoppingBag } from "react-icons/hi2";
+// import {
+//   AlertDialog,
+//   AlertDialogAction,
+//   AlertDialogCancel,
+//   AlertDialogContent,
+//   AlertDialogDescription,
+//   AlertDialogFooter,
+//   AlertDialogHeader,
+//   AlertDialogTitle,
+//   AlertDialogTrigger,
+// } from "@/components/ui/alert-dialog";
 
 const Header = () => {
   const { isLoading } = useGetMeQuery();
@@ -31,6 +42,10 @@ const Header = () => {
     navigate(0);
   };
 
+  // const itemHandler = (e) => {
+  //   navigate('/');
+  // }
+
   return (
     <section className="pt-[3px] sm:px-[40px] px-[20px] shadow">
       <nav className="flex justify-between items-center">
@@ -43,15 +58,32 @@ const Header = () => {
           className="w-96  hidden md:block lg:block "
         />
         <div className="flex gap-4 items-center">
-        <Link to="/cart" >
-          <div className="flex ">
-            <i className="ri-shopping-bag-line text-[2rem]"></i>
-            {cartItems.length > 0 ? (
-              <span className="w-5 h-5 ml-[-17px] mb-2 text-[13px] text-center bg-[#FF1493] text-white font-semibold rounded-xl">
-                {cartItems.length}
-              </span>
-            ) : null}{" "}
-          </div>
+          <Link to="/cart">
+          {/* <AlertDialog> */}
+            <div className="flex ">
+            {/* <AlertDialogTrigger> */}
+              <i className="ri-shopping-bag-line text-[2rem]"></i>
+              {/* </AlertDialogTrigger> */}
+              {cartItems.length > 0 ? (
+                <span className="w-5 h-5 ml-[-17px] mb-2 text-[13px] text-center bg-[#FF1493] text-white font-semibold rounded-xl">
+                  {cartItems.length}
+                </span>
+              ) : ( ""
+      
+                  // <AlertDialogContent>
+                  //   <AlertDialogHeader>
+                  //     <AlertDialogTitle>
+                  //       No item in cart
+                  //     </AlertDialogTitle>
+                  //   </AlertDialogHeader>
+                  //   <AlertDialogFooter>
+                  //     <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  //     <Button onClick={itemHandler}>Continue</Button>
+                  //   </AlertDialogFooter>
+                  // </AlertDialogContent>
+              )}
+            </div>
+            {/* </AlertDialog> */}
           </Link>
           {user ? (
             <DropdownMenu>
