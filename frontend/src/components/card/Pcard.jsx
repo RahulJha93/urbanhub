@@ -15,14 +15,14 @@ const Pcard = ({ product }) => {
     const productPrice = product.price*83;
   return (
     <>
-      <Card className="w-[243px] h-[308px] mb-8">
-        <CardHeader className="p-0">
+      <Card className="w-[243px] h-auto mb-8 transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer">
+        <CardHeader className="p-0 bg-[#f1f1f1]  rounded-tr-xl rounded-tl-xl">
           <CardTitle>
             <img
             //   src={product.images[0].url}
             src={product?.images[0]?.url}
               alt=""
-              className="w-[241px] h-[170px] object-fit rounded-xl"
+              className="w-[241px] h-[170px] mix-blend-multiply p-5 "
             />
           </CardTitle>
           {/* <CardDescription>Card Description</CardDescription> */}
@@ -44,8 +44,8 @@ const Pcard = ({ product }) => {
           </div>
           <p className="font-semibold text-[14px]"> {`Rs ${productPrice}`}</p>
         </CardContent>
-        <CardFooter className="p-2 justify-end">
-          <Button className="mt-[-22px]">
+        <CardFooter className="p-2">
+          <Button className=" w-full">
             <Link to={`/product/${product._id}`}>View Details </Link>
           </Button>
         </CardFooter>

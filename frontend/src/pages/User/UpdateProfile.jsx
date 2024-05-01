@@ -80,7 +80,7 @@ const UpdateProfile = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button> {isLoading ? <Loader /> : "Update"}</Button>
+            <Button className="w-full"> {isLoading ? <Loader /> : "Update"}</Button>
           </CardFooter>
         </form>
       </Card>

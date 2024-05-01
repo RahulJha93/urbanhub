@@ -24,7 +24,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "nodemailer": "^6.9.8",
-    "react-star-ratings": "^2.3.0"
+    "razorpay": "^2.9.3",
+    "react-star-ratings": "^2.3.0",
+    "stripe": "^15.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",

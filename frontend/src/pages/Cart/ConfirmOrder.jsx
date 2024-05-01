@@ -5,6 +5,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { calculateOrdercost } from "@/helper/helper";
+import { Stepper } from 'react-form-stepper';
 
 const ConfirmOrder = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
@@ -19,6 +20,11 @@ const ConfirmOrder = () => {
   };
   return (
     <>
+
+     <Stepper
+  steps={[{ label: 'Shipping' }, { label: 'Confirm Order' }, { label: 'Payment' }]}
+  activeStep={1}  
+/>
       <div className="mt-8 px-4 sm:px-8 ">
         <h1 className="font-bold">Shipping Info:</h1>
         <div className="px-4">

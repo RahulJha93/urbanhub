@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middleware/errorMiddleware.js");
+const Razorpay = require('razorpay');
 dotenv.config({ path: "backend/config/config.env" }); //This Line is Needed when .env file is not in the root directory(URBANHUB).
 
 
@@ -14,6 +15,12 @@ process.on("uncaughtException", (err)=>{
 });
 
 // console.log(hello);
+
+//payment integration
+ const instance = new Razorpay({
+  key_id:  process.env.RAZORPAY_API_KEY,
+  key_secret: process.env.RAZORPAY_API_SECRET,
+});
 
 
 const connectDB = require("./config/dbConnection.js");
@@ -31,10 +38,12 @@ app.use(cookieParser());
 const products = require("./routes/products.js");
 const auth = require("./routes/auth.js");
 const orders = require("./routes/orders.js");
+const payments = require("./routes/payment.js");
 
 app.use("/api/v1/", products);
 app.use("/api/v1/", auth);
 app.use("/api/v1/", orders);
+app.use("/api/v1/", payments);
 
 //using error middleware
 app.use(errorMiddleware);
@@ -51,3 +60,5 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
+
+module.exports = instance;

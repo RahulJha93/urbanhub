@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Stepper } from 'react-form-stepper';
 
 import Loader from "@/components/Loader/Loader";
 import { countries } from "countries-list";
@@ -58,6 +59,12 @@ const Shipping = () => {
 
   // }
   return (
+    <>
+    <Stepper
+  steps={[{ label: 'Shipping' }, { label: 'Confirm Order' }, { label: 'Payment' }]}
+  activeStep={0} activeColor={"#00000"}
+/>
+
     <div className="flex justify-center m-0 items-center h-[100vh] ">
       <Card className="w-[350px] ">
         <form onSubmit={submitHandler}>
@@ -130,6 +137,7 @@ const Shipping = () => {
         </form>
       </Card>
     </div>
+    </>
   );
 };
 

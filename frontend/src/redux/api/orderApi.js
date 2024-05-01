@@ -20,8 +20,17 @@ export const orderApi = createApi({
           };
         },
       }),
+      stripeCheckoutSession: builder.mutation({
+        query(body) {
+          return {
+            url: "/payment/checkout",
+            method: "POST",
+            body,
+          };
+        },
+      }),
     }),
 });
 
 // module.exports = productApi;
-export const {useCreateNewOrderMutation} = orderApi;
+export const {useCreateNewOrderMutation,useStripeCheckoutSessionMutation} = orderApi;

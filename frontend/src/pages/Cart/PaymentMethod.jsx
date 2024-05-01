@@ -6,18 +6,37 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { calculateOrdercost } from "@/helper/helper";
-import { useCreateNewOrderMutation } from "@/redux/api/orderApi";
+import {
+  useCreateNewOrderMutation,
+  useStripeCheckoutSessionMutation,
+} from "@/redux/api/orderApi";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import Loader from "@/components/Loader/Loader";
+import { Stepper } from 'react-form-stepper';
 
 const PaymentMethod = () => {
   const [method, setMethod] = useState("");
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { itemPrice, shippingTotal, taxPrice, shippingPrice } =
     calculateOrdercost(cartItems);
-  const [createNewOrder, { isLoading, error, isSuccess }] =
+  const [createNewOrder, {  error, isSuccess }] =
     useCreateNewOrderMutation();
+
+  const [
+    stripeCheckoutSession,
+    { data: checkoutData, error: checkoutError, isLoading },
+  ] = useStripeCheckoutSessionMutation();
   const nav = useNavigate();
+
+  useEffect(() => {
+    if (checkoutData) {
+      window.location.href = checkoutData?.url;
+    }
+    if (checkoutError) {
+      console.log(checkoutError?.data?.message);
+    }
+  }, [checkoutData, checkoutError]);
 
   useEffect(() => {
     if (error) {
@@ -26,7 +45,7 @@ const PaymentMethod = () => {
     if (isSuccess) {
       nav("/");
     }
-  }, [error,isSuccess]);
+  }, [error, isSuccess]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -34,10 +53,10 @@ const PaymentMethod = () => {
       const orderData = {
         shippingInfo,
         orderItems: cartItems,
-        itemsPrice:itemPrice,
-        shippingAmount:shippingTotal,
-        taxAmount:taxPrice,
-        totalAmount:shippingPrice,
+        itemsPrice: itemPrice,
+        shippingAmount: shippingTotal,
+        taxAmount: taxPrice,
+        totalAmount: shippingPrice,
         paymentInfo: {
           status: "Not Paid",
         },
@@ -46,10 +65,25 @@ const PaymentMethod = () => {
       createNewOrder(orderData);
     }
     if (method == "CARD") {
+      const orderData = {
+        shippingInfo,
+        orderItems: cartItems,
+        itemsPrice: itemPrice,
+        shippingAmount: shippingTotal,
+        taxAmount: taxPrice,
+        totalAmount: shippingPrice,
+      };
+      console.log(orderData);
+      stripeCheckoutSession(orderData);
     }
   };
 
   return (
+    <>
+    <Stepper
+  steps={[{ label: 'Shipping' }, { label: 'Confirm Order' }, { label: 'Payment' }]}
+  activeStep={2}
+/>
     <div className="flex justify-center m-0 items-center h-[100vh] ">
       <Card className="w-[350px] pt-5 ">
         <form onSubmit={submitHandler}>
@@ -58,7 +92,7 @@ const PaymentMethod = () => {
             <RadioGroup defaultValue="comfortable">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem
-                  value="default"
+                  value="COD"
                   id="r1"
                   onClick={(e) => setMethod("COD")}
                 />
@@ -66,18 +100,26 @@ const PaymentMethod = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem
-                  value="comfortable"
+                  value="CARD"
                   id="r2 "
                   onClick={(e) => setMethod("CARD")}
                 />
                 <Label htmlFor="r2">UPI | Credit Card | Debit Card</Label>
               </div>
             </RadioGroup>
-            <Button className="mt-4 w-full"> Continue </Button>
+            {isLoading ? (
+              <Button className="mt-4 w-full">
+                {" "}
+                <Loader />{" "}
+              </Button>
+            ) : (
+              <Button className="mt-4 w-full"> Continue </Button>
+            )}
           </CardContent>
         </form>
       </Card>
     </div>
+    </>
   );
 };
 
