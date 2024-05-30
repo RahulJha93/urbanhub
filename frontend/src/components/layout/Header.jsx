@@ -101,7 +101,7 @@ const Header = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link to="/me/dashboard">Dashboard</Link>
+                  <Link to="/admin/dashboard">Dashboard</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link to="/me/order">Order</Link>

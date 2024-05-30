@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import Loader from "@/components/Loader/Loader";
 import { Stepper } from 'react-form-stepper';
+import StepperReact from "./StepperReact";
 
 const PaymentMethod = () => {
   const [method, setMethod] = useState("");
@@ -80,10 +81,7 @@ const PaymentMethod = () => {
 
   return (
     <>
-    <Stepper
-  steps={[{ label: 'Shipping' }, { label: 'Confirm Order' }, { label: 'Payment' }]}
-  activeStep={2}
-/>
+ <StepperReact value={2}/>
     <div className="flex justify-center m-0 items-center h-[100vh] ">
       <Card className="w-[350px] pt-5 ">
         <form onSubmit={submitHandler}>

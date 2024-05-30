@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { calculateOrdercost } from "@/helper/helper";
 import { Stepper } from 'react-form-stepper';
+import StepperReact from "./StepperReact";
 
 const ConfirmOrder = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
@@ -21,10 +22,11 @@ const ConfirmOrder = () => {
   return (
     <>
 
-     <Stepper
+     {/* <Stepper
   steps={[{ label: 'Shipping' }, { label: 'Confirm Order' }, { label: 'Payment' }]}
   activeStep={1}  
-/>
+/> */}
+<StepperReact value={1}/>
       <div className="mt-8 px-4 sm:px-8 ">
         <h1 className="font-bold">Shipping Info:</h1>
         <div className="px-4">

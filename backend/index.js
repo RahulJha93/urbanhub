@@ -3,7 +3,6 @@ const cors = require('cors');
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middleware/errorMiddleware.js");
-const Razorpay = require('razorpay');
 dotenv.config({ path: "backend/config/config.env" }); //This Line is Needed when .env file is not in the root directory(URBANHUB).
 
 
@@ -16,11 +15,6 @@ process.on("uncaughtException", (err)=>{
 
 // console.log(hello);
 
-//payment integration
- const instance = new Razorpay({
-  key_id:  process.env.RAZORPAY_API_KEY,
-  key_secret: process.env.RAZORPAY_API_SECRET,
-});
 
 
 const connectDB = require("./config/dbConnection.js");
@@ -61,4 +55,4 @@ process.on("unhandledRejection", (err) => {
   });
 });
 
-module.exports = instance;
+

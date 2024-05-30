@@ -8,7 +8,9 @@ import { toast, Toaster } from "sonner";
 import {useDispatch} from "react-redux";
 import { setCartItem } from "@/redux/features/cartSlice";
 
+
 const ProductItems = () => {
+ 
   const params = useParams();
   const dispatch = useDispatch()
 
@@ -38,6 +40,7 @@ const ProductItems = () => {
   };
 
   const setItemToCart = (e) =>{
+
     const cartItem = {
     product:data?.product?._id,
     name:data?.product?.name,
@@ -47,6 +50,7 @@ const ProductItems = () => {
     qty
     };
     dispatch(setCartItem(cartItem));
+    // addedProduct++;
     toast.success("Product added to cart");
   };
 

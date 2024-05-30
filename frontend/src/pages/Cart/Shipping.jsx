@@ -20,6 +20,7 @@ import { countries } from "countries-list";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "@/redux/features/cartSlice";
 import { toast } from "sonner";
+import StepperReact from "./StepperReact";
 
 const Shipping = () => {
   const nav = useNavigate();
@@ -60,10 +61,11 @@ const Shipping = () => {
   // }
   return (
     <>
-    <Stepper
+    {/* <Stepper
   steps={[{ label: 'Shipping' }, { label: 'Confirm Order' }, { label: 'Payment' }]}
   activeStep={0} activeColor={"#00000"}
-/>
+/> */}
+<StepperReact value={0}/>
 
     <div className="flex justify-center m-0 items-center h-[100vh] ">
       <Card className="w-[350px] ">
