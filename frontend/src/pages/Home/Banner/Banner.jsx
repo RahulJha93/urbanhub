@@ -29,9 +29,9 @@ const Banner = () => {
     },
     {
       id: 3,
-      title: "Spring Sale Collections",
+      title: "SmartWatch  Collections",
       description: "Sale! Up to 50% off!",
-      img: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
+      img: "https://www.boat-lifestyle.com/cdn/shop/files/WaveSigma-FI_Black02_1500x.png?v=1702009260",
       url: "/",
       bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
     },

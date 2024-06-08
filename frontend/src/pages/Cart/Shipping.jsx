@@ -54,6 +54,10 @@ const Shipping = () => {
     dispatch(saveShippingInfo({ address, city, phoneNo, country, pincode }));
     nav("/confirmOrder");
   };
+  const handleCountryChange = (value) =>{
+    setCountry(value)
+    console.log("Selected country:", value)
+  }
 
   // const buttonHandler = (e) => {
   //   nav("/confirmOrder")
@@ -111,7 +115,7 @@ const Shipping = () => {
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="name">Country</Label>
-                <Select defaultValue={country?.name} onValueChange={(e) => setCountry(country?.name)}>
+                <Select defaultValue={country?.name} onValueChange={handleCountryChange}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select a Country" value={country?.name} />
                   </SelectTrigger>

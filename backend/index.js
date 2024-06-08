@@ -1,31 +1,35 @@
 const express = require("express");
-const cors = require('cors');
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middleware/errorMiddleware.js");
+
+
 dotenv.config({ path: "backend/config/config.env" }); //This Line is Needed when .env file is not in the root directory(URBANHUB).
 
-
 //handle uncaught exceptions Ex:Undefined Variable like "port is not defined"
-process.on("uncaughtException", (err)=>{
-   console.log( `Error: ${err}` );
-   console.log("Shutting down due to uncaught exception");
-   process.exit(1);
+process.on("uncaughtException", (err) => {
+  console.log(`Error: ${err}`);
+  console.log("Shutting down due to uncaught exception");
+  process.exit(1);
 });
 
 // console.log(hello);
-
-
 
 const connectDB = require("./config/dbConnection.js");
 
 const app = express();
 const port = process.env.PORT;
 
-
 connectDB();
-app.use(cors({origin: true, credentials: true,optionSuccessStatus:200}));
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(cors({ origin: true, credentials: true, optionSuccessStatus: 200 }));
+app.use(
+  express.json({
+    limit: "10mb",
+  })
+);
 app.use(cookieParser());
 
 //Import all routes
@@ -54,5 +58,3 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
-
-

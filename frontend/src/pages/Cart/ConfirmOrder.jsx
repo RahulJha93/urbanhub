@@ -62,7 +62,7 @@ const ConfirmOrder = () => {
               <div className="flex flex-col items-end">
                 <div className="flex items-center gap-2"></div>
                 <h1 className="font-semibold text-xs">
-                  {item.qty} x ${item?.price} = <>${item.qty * item?.price}</>
+                  {item.qty} x ₹{item?.price} = <>₹{item.qty * item?.price}</>
                 </h1>
               </div>
             </div>
@@ -72,19 +72,19 @@ const ConfirmOrder = () => {
           <h1 className="font-semibold">Order Summary</h1>
           <div className="text-gray-500 flex justify-between mt-3">
             <p>Subtotal :</p>
-            <p>{itemPrice}</p>
+            <p>₹ {itemPrice}</p>
           </div>
           <div className="text-gray-500 flex justify-between mt-4 ">
             <p>Shipping :</p>
-            <p>{shippingPrice}</p>
+            <p>₹ {shippingPrice}</p>
           </div>
           <div className="text-gray-500 flex justify-between mt-4 border-b-2 pb-2">
             <p>Tax :</p>
-            <p>{taxPrice}</p>
+            <p>₹ {taxPrice}</p>
           </div>
           <div className="text-gray-500 flex justify-between mt-4 border-b-2 pb-2">
             <p>Total :</p>
-            <p>{shippingTotal}</p>
+            <p>₹ {shippingTotal}</p>
           </div>
           <Button className="mt-4 w-full" onClick={paymentHandler}>
             Proceed to Payment

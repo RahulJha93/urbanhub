@@ -129,7 +129,7 @@ const Cart = () => {
                   +
                 </Button>
               </div>
-              <h1 className="font-semibold">${item.price}</h1>
+              <h1 className="font-semibold">₹{item.price}</h1>
             </div>
           </div>
         ))}
@@ -143,7 +143,7 @@ const Cart = () => {
         <div className="text-gray-500 flex justify-between mt-4 border-b-2 pb-2">
           <p>Est Total :</p>
           <p>
-            $
+          ₹
             {cartItems
               ?.reduce((acc, item) => acc + item?.qty * item?.price, 0)
               .toFixed(2)}{" "}

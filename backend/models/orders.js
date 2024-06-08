@@ -28,7 +28,7 @@ const orderSchema = mongoose.Schema(
       type: String,
       required: true,
       enum: {
-        values: ["COD", "CARD"],
+        values: ["COD", "card"],
         message: "Please select card or cod",
       },
     },

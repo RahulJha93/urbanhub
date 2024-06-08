@@ -16,7 +16,7 @@ const ExResetPass = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const {token} = useParams();
 //   const [message, setMessage] = useState('');
-console.log(token);
+// console.log(token);
 
   const handleResetPassword = async (e) => {
     e.preventDefault();

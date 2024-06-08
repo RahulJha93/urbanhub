@@ -17,6 +17,7 @@ import Cart from "../../pages/Cart/Cart";
 import Shipping from "../../pages/Cart/Shipping";
 import ConfirmOrder from "../../pages/Cart/ConfirmOrder";
 import PaymentMethod from "../../pages/Cart/PaymentMethod";
+import Success from "@/pages/Order/Success";
 
 const User = () => {
   return (
@@ -60,6 +61,14 @@ const User = () => {
         element={
           <ProtectedRoute>
             <PaymentMethod />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/order/success"
+        element={
+          <ProtectedRoute>
+            <Success />
           </ProtectedRoute>
         }
       />

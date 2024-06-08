@@ -4,6 +4,7 @@ import Admin from "./components/routes/Admin";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import { Toaster } from "@/components/ui/sonner";
+import './App.css'
 
 function App() {
   const userRoutes = User();

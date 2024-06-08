@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import StarRatings from 'react-star-ratings';
 
 const Pcard = ({ product }) => {
-    const productPrice = product.price*83;
+    const productPrice = product.price;
   return (
     <>
       <Card className="w-[243px] h-auto mb-8 transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer">

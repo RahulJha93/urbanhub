@@ -7,7 +7,7 @@ const User = require("../models/users");
 
 const isUserAuthenticated = AsyncHandler(async (req, res, next) => {
   const { token } = req.cookies;
-  console.log(token);
+  // console.log(token);
 
   if (!token) {
     return next(new ErrorHandler("Login First To view this content", 401));
@@ -15,7 +15,7 @@ const isUserAuthenticated = AsyncHandler(async (req, res, next) => {
   const decoded = jwt.verify(token, process.env.JWT_SCERET);
   // console.log(decoded);
   req.user = await User.findById(decoded.id);
-  console.log( req.user);
+  // console.log( req.user);
   next();
 });
 

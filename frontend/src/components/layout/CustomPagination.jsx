@@ -20,8 +20,8 @@ const CustomPagination = ({ resPerPage, filteredProductCount }) => {
   };
 
   return (
-    <div>
-      {filteredProductCount && resPerPage && (
+    <div className="flex justify-center gap-4">
+      {filteredProductCount > resPerPage && (
         <Pagination
           activePage={currentPage}
           itemsCountPerPage={resPerPage}
@@ -31,6 +31,8 @@ const CustomPagination = ({ resPerPage, filteredProductCount }) => {
           prevPageText={"Prev"}
           firstPageText={"First"}
           lastPageText={"Last"}
+          itemclass="page-item"
+          linkClass="page-link"
         />
       )}
     </div>

@@ -55,7 +55,7 @@ const PaymentMethod = () => {
         shippingInfo,
         orderItems: cartItems,
         itemsPrice: itemPrice,
-        shippingAmount: shippingTotal,
+        shippingAmount: parseInt(shippingTotal),
         taxAmount: taxPrice,
         totalAmount: shippingPrice,
         paymentInfo: {
@@ -65,7 +65,7 @@ const PaymentMethod = () => {
       };
       createNewOrder(orderData);
     }
-    if (method == "CARD") {
+    if (method == "card") {
       const orderData = {
         shippingInfo,
         orderItems: cartItems,
@@ -100,7 +100,7 @@ const PaymentMethod = () => {
                 <RadioGroupItem
                   value="CARD"
                   id="r2 "
-                  onClick={(e) => setMethod("CARD")}
+                  onClick={(e) => setMethod("card")}
                 />
                 <Label htmlFor="r2">UPI | Credit Card | Debit Card</Label>
               </div>

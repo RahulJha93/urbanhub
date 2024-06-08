@@ -9,7 +9,7 @@ import CustomPagination from "@/components/layout/CustomPagination";
 
 const Home = () => {
   const { isLoading, data, error, isError } = useGetProductsQuery();
-  console.log(data);
+
 
   if (isLoading) return <Loader />;
   return (

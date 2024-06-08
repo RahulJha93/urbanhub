@@ -149,7 +149,7 @@ const resetPassword = asyncHandler(async (req, res, next) => {
   user.resetPasswordExpire = undefined;
 
   await user.save();
-  console.log(user);
+  // console.log(user);
 
   sendToken(user, 200, res);
 });
@@ -173,7 +173,7 @@ const updatePassword = asyncHandler(async (req, res, next) => {
     req?.body?.oldPassword,
     user.password
   );
-  console.log(isPasswordMatched);
+  // console.log(isPasswordMatched);
 
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Old Password mismatch", 400));

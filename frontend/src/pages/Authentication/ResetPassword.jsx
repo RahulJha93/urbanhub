@@ -23,7 +23,7 @@ const ResetPassword = () => {
     }
     if (error) {
       toast.error(error?.data?.message);
-      console.log(data);
+      // console.log(data);
     }
     if (isSuccess) {
       toast.error("Password reset completed successfully");
