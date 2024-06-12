@@ -137,9 +137,9 @@ const stripeWebhook = asyncHandler(async (req, res, next) => {
       };
       await Order.create(orderData);
 
-      console.log("====================");
-      console.log(orderData);
-      console.log("====================");
+      // console.log("====================");
+      // console.log(orderData);
+      // console.log("====================");
 
       // console.log("Order =>",orderItems);
 

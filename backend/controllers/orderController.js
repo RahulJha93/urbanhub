@@ -34,7 +34,11 @@ const newOrder = asyncHandler(async (req, res, next) => {
 
 //get order details - api/v1/orders/:id
 const getOrderDetails = asyncHandler(async (req, res, next) => {
-  const order = await Order.findById(req.params.id);
+  const order = await Order.findById(req.params.id)
+  .populate(
+    "user",
+    "name email"
+  );
   if (!order) {
     return next(
       new ErrorHandler("No Order found for id " + req.params.id, 404)

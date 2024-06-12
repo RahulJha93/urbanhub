@@ -104,7 +104,7 @@ const Header = () => {
                   <Link to="/admin/dashboard">Dashboard</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link to="/me/order">Order</Link>
+                  <Link to="/me/orders">Order</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link to="/me/profile">Profile</Link>

@@ -44,33 +44,34 @@ const PaymentMethod = () => {
       toast.error(error?.data?.message);
     }
     if (isSuccess) {
-      nav("/");
+      nav("/me/orders?order_success=true");
     }
   }, [error, isSuccess]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (method == "COD") {
+    if (method === "COD") {
       const orderData = {
         shippingInfo,
         orderItems: cartItems,
         itemsPrice: itemPrice,
         shippingAmount: parseInt(shippingTotal),
         taxAmount: taxPrice,
-        totalAmount: shippingPrice,
+        totalAmount: shippingTotal,
         paymentInfo: {
           status: "Not Paid",
         },
         paymentsMethod: "COD",
       };
+      console.log(orderData);
       createNewOrder(orderData);
     }
-    if (method == "card") {
+    if (method === "card") {
       const orderData = {
         shippingInfo,
         orderItems: cartItems,
         itemsPrice: itemPrice,
-        shippingAmount: shippingTotal,
+        shippingAmount: parseInt(shippingTotal),
         taxAmount: taxPrice,
         totalAmount: shippingPrice,
       };
