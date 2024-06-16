@@ -30,7 +30,7 @@ const Login = () => {
     }
     if(data){
       toast.success("Logined")
-      navigate("/DemoFile");
+      navigate("/");
     }
     if (error) {
       toast.error(error?.data?.message);
@@ -67,6 +67,7 @@ const Login = () => {
                 <Label htmlFor="name">Password</Label>
                 <Input
                   id="name"
+                  type="password"
                   placeholder="Enter Your Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />

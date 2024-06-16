@@ -8,6 +8,7 @@ const {
   createProductReview,
   getProductReviews,
   deleteProductReview,
+  canUserReview,
   // getProductByCategory,
 } = require("../controllers/productsControllers.js");
 const router = express.Router();
@@ -40,5 +41,8 @@ router
 router
   .route("/admin/reviews")
   .delete(isUserAuthenticated, authroziedRole("admin"), deleteProductReview);
+router
+  .route("/canReview")
+  .get(isUserAuthenticated,canUserReview);
 
 module.exports = router;

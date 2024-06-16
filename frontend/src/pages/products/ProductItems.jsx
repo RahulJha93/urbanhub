@@ -1,25 +1,58 @@
 import { Button } from "@/components/ui/button";
-import { useGetProductsDetailsQuery } from "@/redux/api/productsApi";
+import {
+  useCanUserReviewQuery,
+  useGetProductsDetailsQuery,
+  useSubmitReviewsMutation,
+} from "@/redux/api/productsApi";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 import Loader from "@/components/Loader/Loader";
 import { toast, Toaster } from "sonner";
-import {useDispatch} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCartItem } from "@/redux/features/cartSlice";
-
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import ListReviews from "../Reviews/ListReviews";
 
 const ProductItems = () => {
- 
   const params = useParams();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [activeImg, setActiveImg] = useState("");
+  const [open, setOpen] = useState(false);
   const [qty, setQty] = useState(1);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+  const [submitReview, { loading, error, isSuccess }] =
+    useSubmitReviewsMutation();
+  const { data, isLoading, isError } = useGetProductsDetailsQuery(params?.id);
 
-  const { data, isLoading, error, isError } = useGetProductsDetailsQuery(
-    params?.id
-  );
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  const { data: khata } = useCanUserReviewQuery(data?.product?._id);
+  const canReview = khata?.canReview;
+  // console.log(khata);
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Review Posted");
+    }
+    if (error) {
+      console.log(error);
+      toast.error(error?.data?.message);
+    }
+  }, [isSuccess]);
 
   const increaseQty = (e) => {
     const count = document.querySelector(".count");
@@ -39,19 +72,25 @@ const ProductItems = () => {
     setQty(qty);
   };
 
-  const setItemToCart = (e) =>{
-
+  const setItemToCart = (e) => {
     const cartItem = {
-    product:data?.product?._id,
-    name:data?.product?.name,
-    price:data?.product?.price,
-    image:data?.product?.images[0]?.url,
-    stock:data?.product?.stock,
-    qty
+      product: data?.product?._id,
+      name: data?.product?.name,
+      price: data?.product?.price,
+      image: data?.product?.images[0]?.url,
+      stock: data?.product?.stock,
+      qty,
     };
     dispatch(setCartItem(cartItem));
     // addedProduct++;
     toast.success("Product added to cart");
+  };
+
+  const sumbitHandler = (e) => {
+    const productId = data?.product?._id;
+    const reviewData = { rating, comment, productId };
+    submitReview(reviewData);
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -65,6 +104,9 @@ const ProductItems = () => {
   useEffect(() => {
     if (isError) {
       toast.error(error?.data?.message);
+    }
+    if (data) {
+      console.log(data);
     }
   }, [isError, error]);
 
@@ -105,6 +147,9 @@ const ProductItems = () => {
               starDimension="20px"
               starSpacing="1px"
             />
+            <span>
+              {""}({data?.product?.numOfReviews}Reviews) {""}
+            </span>
             <div>
               <h1 className="font-semibold mt-[10px] mb-[4px]">
                 {data?.product?.price}
@@ -139,8 +184,58 @@ const ProductItems = () => {
               Sold by :{" "}
               <span className="text-gray text-sm">{data?.product?.seller}</span>
             </h1>
+            <div className="pt-5 pb-10">
+              {isAuthenticated ? (
+                canReview ? (
+                  <Dialog open={open} onOpenChange={setOpen}>
+                    <DialogTrigger asChild>
+                      <Button>Submit Your Review</Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle className="">
+                          Submit your reviews
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="grid gap-4 py-4">
+                        <div className="grid">
+                          <StarRatings
+                            rating={rating}
+                            starRatedColor="#14958F"
+                            numberOfStars={5}
+                            name="rating"
+                            starDimension="40px"
+                            starSpacing="1px"
+                            changeRating={(e) => setRating(e)}
+                          />
+                        </div>
+                        <div className="grid">
+                          <Textarea
+                            placeholder="Type your message here."
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <DialogFooter>
+                        <Button className="w-full" onClick={sumbitHandler}>
+                          Save changes
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+                ) : null
+              ) : (
+                <Button type="submit" className="">
+                  Login to Post Review
+                </Button>
+              )}
+            </div>
           </div>
         </div>
+        {data?.product?.reviews?.length > 0 && (
+          <ListReviews reviews={data?.product?.reviews} />
+        )}
       </section>
     </>
   );

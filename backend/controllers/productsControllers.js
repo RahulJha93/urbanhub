@@ -2,6 +2,7 @@ const Product = require("../models/products.js");
 const APIFilters = require("../utils/apiFilter.js");
 const ErrorHandler = require("../utils/errorHandler.js");
 const asyncHandler = require("express-async-handler");
+const Order = require("../models/orders.js");
 
 //display product by category name => api/v1/category?elctronics
 // const getProductByCategory = asyncHandler(async(req,res)=>{
@@ -10,7 +11,6 @@ const asyncHandler = require("express-async-handler");
 //   return res.status(200).json({
 //     products,
 //   });
-
 
 // });
 
@@ -45,7 +45,9 @@ const newProducts = asyncHandler(async (req, res) => {
 
 // search product by id =>api/v1/products/:id
 const getProductDetail = asyncHandler(async (req, res, next) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id).populate(
+    "reviews.user"
+  );
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
   }
@@ -174,8 +176,23 @@ const deleteProductReview = asyncHandler(async (req, res, next) => {
   });
 });
 
+// can user review or not api/v1/canReview
+const canUserReview = asyncHandler(async (req, res, next) => {
+  const order = await Order.find({
+    user:req.user._id,
+    "orderItems.product" : req.query.productId,
+  })
+
+  if(order.length ===0) return res.status(200).json({canReview:false});
+
+  res.status(200).json({
+   canReview:true,
+  });
+});
+
 module.exports = {
   // getProductByCategory,
+  canUserReview,
   getProducts,
   newProducts,
   getProductDetail,
