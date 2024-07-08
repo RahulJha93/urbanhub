@@ -1,10 +1,10 @@
 import React from "react";
 import User from "./components/routes/User";
 import Admin from "./components/routes/Admin";
-import { BrowserRouter, Routes,Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import { Toaster } from "@/components/ui/sonner";
-import './App.css'
+import "./App.css";
 
 function App() {
   const userRoutes = User();
@@ -12,11 +12,13 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Toaster />
+        <Toaster richColors toastOptions={{}} position="bottom-center"
+        />
+
         <Header />
         <Routes>
-        {userRoutes}
-        {adminRoutes}
+          {userRoutes}
+          {adminRoutes}
         </Routes>
       </BrowserRouter>
     </>

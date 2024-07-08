@@ -16,7 +16,7 @@ const Order = require("../models/orders.js");
 
 //display all products => api/v1/products
 const getProducts = asyncHandler(async (req, res) => {
-  const resPerPage = 6;
+  const resPerPage = 4;
 
   const apiFilters = new APIFilters(Product, req.query).search().filters();
   let products = await apiFilters.query;

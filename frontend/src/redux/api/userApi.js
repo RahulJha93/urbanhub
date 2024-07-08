@@ -39,15 +39,29 @@ export const userApi = createApi({
       },
       invalidatesTags: ["User"],
     }),
+    
     uploadAvatar: builder.mutation({
       query(body) {
         return {
           url: "/me/uploadAvatar",
           method: "PUT",
           body,
+          headers: {
+            "Content-Type": "multipart/form-data","boundary":"MyBoundary",
+          },
         };
       },
       invalidatesTags: ["User"],
+    }),
+
+    updatePassword: builder.mutation({
+      query(body) {
+        return {
+          url: "/password/update",
+          method: "PUT",
+          body,
+        };
+      },
     }),
 
     forgetPassword: builder.mutation({
@@ -78,4 +92,5 @@ export const {
   useUploadAvatarMutation,
   useForgetPasswordMutation,
   useResetPasswordMutation,
+  useUpdatePasswordMutation,
 } = userApi;

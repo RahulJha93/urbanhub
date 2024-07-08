@@ -44,8 +44,8 @@ const SideBar = () => {
         </CardHeader>
         <CardContent className="">
           <div>
-            <Avatar className="w-[100px]">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <Avatar className="w-[100px] h-[100px]">
+              <AvatarImage src={user?.avatar?.url} alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div>

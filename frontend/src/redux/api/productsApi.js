@@ -9,14 +9,24 @@ export const productApi = createApi({
     },
     credentials: "include",
   }),
-  tagTypes :["Product"],
+  tagTypes: ["Product"],
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: (params) => "/products",
+      query: (params) => ({
+      url :"/products",
+      params: {
+        page: params?.page,
+        keyword : params?.keyword, 
+        "price[gte]":params.min,
+        "price[lte]":params.max,
+        category:params.category,
+        ratings:params.ratings,
+      },
+      }),
     }),
     getProductsDetails: builder.query({
       query: (id) => `/products/${id}`,
-      providesTags :["Product"],
+      providesTags: ["Product"],
     }),
     getProductsByCategory: builder.query({
       query: (category) => `/products?category=${category}`,
@@ -33,7 +43,7 @@ export const productApi = createApi({
           body,
         };
       },
-      invalidatesTags : ["Product"],
+      invalidatesTags: ["Product"],
     }),
   }),
 });

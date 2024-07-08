@@ -1,11 +1,12 @@
  import React from "react";
 import { useState,useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 
 
 const CustomPagination = ({ resPerPage, filteredProductCount }) => {
   const [currentPage, setCurrentPage] = useState("");
+  const navigate = useNavigate();
 
   let [searchParams] = useSearchParams();
 
@@ -15,7 +16,17 @@ const CustomPagination = ({ resPerPage, filteredProductCount }) => {
     setCurrentPage(page);
   }, [page]);
 
-  const setCurrentPageNo = (e) => {
+  const setCurrentPageNo = (pageNumber) => {
+    setCurrentPage(pageNumber);
+
+    if(searchParams.has("page")){
+      searchParams.set("page",pageNumber);
+    }
+    else {
+      searchParams.set("page",pageNumber);
+    }
+    const path = window.location.pathname + "?" + searchParams.toString();
+    navigate(path);
 
   };
 

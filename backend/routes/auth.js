@@ -1,4 +1,7 @@
 const express = require("express");
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 const router = express.Router();
 const {
   registerUser,
@@ -25,7 +28,9 @@ router.route("/password/forget").put(forgotPassword);
 router.route("/password/reset/:token").put(resetPassword);
 router.route("/me").get(isUserAuthenticated, getUserProfile);
 router.route("/me/update").put(isUserAuthenticated, updateprofile);
-router.route("/me/uploadAvatar").put(isUserAuthenticated, uploadAvatar);
+// router.route("/me/uploadAvatar").put(isUserAuthenticated, uploadAvatar);
+router.route('/me/uploadAvatar').put(isUserAuthenticated,upload.single('file'), uploadAvatar);
+
 router.route("/password/update").put(isUserAuthenticated, updatePassword);
 
 router.route("/admin/users").get(isUserAuthenticated,authroziedRole('admin'), allUsers);

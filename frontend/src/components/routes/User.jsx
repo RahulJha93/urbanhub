@@ -20,12 +20,14 @@ import PaymentMethod from "../../pages/Cart/PaymentMethod";
 import Success from "@/pages/Order/Success";
 import MyOrder from "../order/MyOrder";
 import OrderDetail from "../order/OrderDetail";
+import LatestProduct from "../../pages/products/Electronics";
+import Invoice from "@/pages/Order/Invoice";
 
 const User = () => {
   return (
     <>
     
-      <Route path="" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/product/:id" element={<ProductItems />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
@@ -37,7 +39,7 @@ const User = () => {
           </ProtectedRoute>
         }
       />
-      {/* <Route path="/demofile" element={<DemoFile />} /> */}
+     <Route path="/search" element={<LatestProduct />} />
       <Route path="/password/forget" element={<ForgetPassword />} />
       {/* <Route path="/password/reset/:token" element={<ResetPassword />} /> */}
       <Route path="/password/reset/:token" element={<ExResetPass />} />
@@ -79,6 +81,14 @@ const User = () => {
         element={
           <ProtectedRoute>
             <OrderDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/invoice/order/:id"
+        element={
+          <ProtectedRoute>
+            <Invoice />
           </ProtectedRoute>
         }
       />

@@ -5,8 +5,9 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middleware/errorMiddleware.js");
 
-
-dotenv.config({ path: "backend/config/config.env" }); //This Line is Needed when .env file is not in the root directory(URBANHUB).
+if(process.env.NODE_ENV !== "production"){
+dotenv.config({ path: "backend/config/config.env" });
+} //This Line is Needed when .env file is not in the root directory(URBANHUB).
 
 //handle uncaught exceptions Ex:Undefined Variable like "port is not defined"
 process.on("uncaughtException", (err) => {

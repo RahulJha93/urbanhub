@@ -16,6 +16,7 @@ import { useGetMeQuery } from "@/redux/api/userApi";
 import { useLazyLogoutQuery } from "@/redux/api/authApi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Search from "./Search";
 // import { Navigate } from "react-router-dom";
 // import { HiOutlineShoppingBag } from "react-icons/hi2";
 // import {
@@ -52,11 +53,7 @@ const Header = () => {
         <Link to="/" className="font-bold">
           UrbanHub
         </Link>
-        <Input
-          type="search"
-          placeholder="Search . . ."
-          className="w-96  hidden md:block lg:block "
-        />
+        <Search/>
         <div className="flex gap-4 items-center">
           <Link to="/cart">
           {/* <AlertDialog> */}
@@ -89,9 +86,9 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar>
-                  <AvatarImage src="src/assets/image/default_avatar.jpg" />
+                  <AvatarImage src={user?.avatar ? user?.avatar?.url : "no image"} />
                   <AvatarFallback>
-                    {user?.avatar ? user?.avatar?.url : "no image"}{" "}
+                    {user?.avatar ? user?.avatar?.url : "no image"}
                   </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>

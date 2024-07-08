@@ -11,22 +11,14 @@ const LatestProduct = () => {
 
   useEffect(() => {
    //to be fix later
-
-    if (!data) {
-      if(appear=="1"){
-        console.log("After next turn :");
-        console.log(appear)
-      }else{
-        console.log("Before :");
-        console.log(appear)
-        setAppear("1");
-        console.log("After setting :");
-        console.log(appear)
-        console.log(error);
-        toast.error(error?.data?.message);
-      }
-    }
-  }, [])
+  if(data){
+    console.log(data)
+  }
+  if(error){
+    console.log(error);
+    toast.error(error?.message)
+  }
+  }, [data,error])
   
 
   return (
@@ -37,6 +29,7 @@ const LatestProduct = () => {
           return <Pcard product={e} key={key} />
         })}
       </div>
+      
 
     </>
   );

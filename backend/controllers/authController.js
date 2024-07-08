@@ -65,11 +65,23 @@ const logout = asyncHandler(async (req, res) => {
 
 //upload user avatar => api/v1/me/upload_avatar
 const uploadAvatar = asyncHandler(async (req, res) => {
-  const avatarResponse = await uploadFiles(req.body.user,"URBANHUB-ECOMMERCE/AVATARS");
+  console.log(req.file);
+  if (!req.file) {
+    return res.status(400).json({ message: "No file provided" });
+  }
+  const b64 = Buffer.from(req.file.buffer).toString("base64");
+  let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+
+  const avatarResponse = await uploadFiles(dataURI,"URBANHUB-ECOMMERCE/AVATARS");
+  
+  console.log(req.file);
+  console.log("=========");
+  console.log(avatarResponse);
 
   const user = await User.findByIdAndUpdate(req?.user?._id,{
     avatar:avatarResponse,
   });
+  console.log(user);
 
   res.status(200).json({
     user,

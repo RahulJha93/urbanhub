@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Loader from "@/components/Loader/Loader";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,16 +10,40 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useUpdateProfileMutation } from "@/redux/api/userApi";
-import { useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useUpdatePasswordMutation} from "@/redux/api/userApi";
+import Loader from "@/components/Loader/Loader";
 import { toast } from "sonner";
 
 const NewPassword = () => {
+  const [oldPassword ,setOldPassword] = useState('');
+  const [newPassword ,setNewPassword] = useState('');
+  const [updatePassword, { error, data, isLoading, isSuccess }] =
+  useUpdatePasswordMutation();
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Password Updated Successfully");
+
+    }
+    if(error){
+      toast.error("Password Mismatch");
+    }
+  }, [isSuccess,error]);
+
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const updateData = {
+      oldPassword,
+      newPassword,
+    };
+    updatePassword(updateData);
+  };
   return (
     <div>
     <Card className="mt-4">
-      <form onSubmit={"submitHandler"}>
+      <form onSubmit={submitHandler}>
         <CardHeader>
           <CardTitle>Update Password</CardTitle>
         </CardHeader>
@@ -29,21 +52,21 @@ const NewPassword = () => {
             <Label htmlFor="name">Old Password</Label>
             <Input
               id="name"
-              placeholder=" Enter Your Name"
-            //   onChange={(e) => setName(e.target.value)}
+              placeholder=" Enter Your Old Password"
+              onChange={(e) => setOldPassword(e.target.value)}
             />
           </div>
           <div className="mt-2">
             <Label htmlFor="email">New Password</Label>
             <Input
               id="email"
-              placeholder=" Enter Your Email"
-            //   onChange={(e) => setEmail(e.target.value)}
+              placeholder=" Enter Your New Password"
+              onChange={(e) => setNewPassword(e.target.value)}
             />
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Change</Button>
+        <Button className="w-full"> {isLoading ? <Loader /> : "Update"}</Button>
         </CardFooter>
       </form>
     </Card>
