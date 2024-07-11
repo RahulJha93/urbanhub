@@ -6,12 +6,12 @@
   "scripts": {
     "prestart": "chmod +x node_modules/.bin/js-node",
     "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js",
-    "prod": "nodemon backend/index.js",
+    "dev": "node backend/index.js",
+    "prod": "node backend/index.js",
     "seed": "node backend/data/seeder.js"
   },
   "bin" : {
-    "execute" : "index.js"
+    "execute" : "backend/.js"
 },
   "author": "Rahul Jha",
   "license": "ISC",
