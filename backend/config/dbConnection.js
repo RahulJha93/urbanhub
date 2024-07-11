@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 
 const connectDB = async ()=>{
-    let DB_URL;
-    if(process.env.NODE_ENV==="DEVELOPMENT"){DB_URL=process.env.DB_URL;}
-    if(process.env.NODE_ENV==="PRODUCTION"){DB_URL=process.env.DB_URL;}
+    let DB_URL=process.env.DB_URL;
+    // if(process.env.NODE_ENV==="DEVELOPMENT"){DB_URL=process.env.DB_URL;}
+    // if(process.env.NODE_ENV==="PRODUCTION"){DB_URL=process.env.DB_URL;}
 
     mongoose.connect(DB_URL)
     .then((con)=>{

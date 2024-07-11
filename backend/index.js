@@ -48,7 +48,7 @@ app.use("/api/v1/", payments);
 app.use(errorMiddleware);
 
 const server = app.listen(port, () => {
-  console.log(`Serving running on port ${port} in ${process.env.NODE_ENV}`);
+  console.log(`Serving running on port ${port}`);
 });
 
 //Handle Unhandle Promise Rejections Ex:spelling mistake in monngodb url
