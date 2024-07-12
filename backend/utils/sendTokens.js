@@ -1,3 +1,6 @@
+//create a token and save in cookie.
+const generateToken=require('../config/generateToken.js');
+
 const sendToken = (user, statusCode, res) => {
   const token = generateToken(user._id);
 
