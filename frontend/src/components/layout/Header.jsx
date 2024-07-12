@@ -38,6 +38,8 @@ const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
+  console.log(user);
+
   const logoutHandler = (e) => {
     logout();
     navigate(0);
