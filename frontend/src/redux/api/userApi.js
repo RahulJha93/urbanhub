@@ -5,26 +5,26 @@ export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_BACKEND_URL}/api/v1`,
-    // baseUrl: "/api",
     headers: {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    tagTypes: ["User"],
   }),
+  tagTypes: ["User"],
   endpoints: (builder) => ({
     getMe: builder.query({
       query: () => "/me",
       transformResponse: (result) => result.user,
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        dispatch(setLoading(true));
         try {
           const { data } = await queryFulfilled;
           dispatch(setUser(data));
           dispatch(setIsAuthenticated(true));
-          dispatch(setLoading(false));
         } catch (err) {
-          dispatch(setLoading(false));
           console.log(err);
+        } finally {
+          dispatch(setLoading(false));
         }
       },
       providesTags: ["User"],
@@ -39,7 +39,6 @@ export const userApi = createApi({
       },
       invalidatesTags: ["User"],
     }),
-    
     uploadAvatar: builder.mutation({
       query(body) {
         return {
@@ -47,13 +46,12 @@ export const userApi = createApi({
           method: "PUT",
           body,
           headers: {
-            "Content-Type": "multipart/form-data","boundary":"MyBoundary",
+            "Content-Type": "multipart/form-data",
           },
         };
       },
       invalidatesTags: ["User"],
     }),
-
     updatePassword: builder.mutation({
       query(body) {
         return {
@@ -63,7 +61,6 @@ export const userApi = createApi({
         };
       },
     }),
-
     forgetPassword: builder.mutation({
       query(body) {
         return {
@@ -73,9 +70,8 @@ export const userApi = createApi({
         };
       },
     }),
-
     resetPassword: builder.mutation({
-      query(token, body) {
+      query({ token, body }) {
         return {
           url: `/password/reset/${token}`,
           method: "PUT",
