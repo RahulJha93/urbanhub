@@ -3,21 +3,22 @@ const generateToken=require('../config/generateToken.js');
 
 const sendToken = (user, statusCode, res) => {
   const token = generateToken(user._id);
+ 
 
   const options = {
     expires: new Date(
       Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    sameSite: 'None', // Allow cross-site cookies
-    secure: process.env.NODE_ENV === 'PRODUCTION', // Only send cookies over HTTPS in production
+    // secure: process.env.NODE_ENV === 'PRODUCTION',
+    credentials:"include"
+
   };
 
   res.status(statusCode).cookie("token", token, options).json({
-    success: true,
     token,
-    user,
-  });
+  })
+  // res.session.token = token;
 };
 
 module.exports = sendToken;
