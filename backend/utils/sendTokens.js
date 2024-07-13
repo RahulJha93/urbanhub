@@ -10,6 +10,8 @@ const sendToken = (user, statusCode, res) => {
       Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    secure: true, // Set to true if your using https
+    sameSite: 'None', // Allows cross-site cookies
     // secure: process.env.NODE_ENV === 'PRODUCTION',
     credentials:"include"
 

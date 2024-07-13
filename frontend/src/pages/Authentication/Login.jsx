@@ -25,10 +25,11 @@ const Login = () => {
 
   useEffect(() => {
 
-    if(isAuthenticated){
-      navigate("/");
-    }
-    if(data){
+    // if(isAuthenticated){
+    //   navigate("/");
+    // }
+    if(data && isAuthenticated){
+      console.log(data)
       toast.success("Logined")
       navigate("/");
     }
