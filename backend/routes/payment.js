@@ -7,4 +7,5 @@ const {StripeCheckOutSession,stripeWebhook} = require("../controllers/paymentCon
 router.route("/payment/checkout").post(isUserAuthenticated,StripeCheckOutSession);
 router.route('/payment/webhook').post(stripeWebhook);
 
+
 module.exports = router;

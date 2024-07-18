@@ -35,9 +35,9 @@ const MyOrder = () => {
     if (error) {
       toast.error(error?.data?.message);
     }
-    // if (data) {
-    //   console.log(data);
-    // }
+    if (data) {
+      console.log(data);
+    }
     if (order_Success) {
      dispatch(clearCartItem());
      navigate("/me/orders")

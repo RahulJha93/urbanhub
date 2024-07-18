@@ -61,28 +61,7 @@ const Cart = () => {
       toast.error("Please add items in cart")
     }
   };
-  useEffect(() => {
-    if (cartItems.length == 0) {
-      <AlertDialog>
-        <AlertDialogTrigger >
-          <Button variant="outline">Show Dialog</Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>;
-    }
-  }, [cartItems]);
+ 
 
   return (
     <section className="mt-8 px-4 sm:px-8 flex flex-col sm:flex-row justify-between gap-8">

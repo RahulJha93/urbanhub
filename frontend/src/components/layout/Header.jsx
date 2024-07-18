@@ -14,22 +14,22 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import { useGetMeQuery } from "@/redux/api/userApi";
 import { useLazyLogoutQuery } from "@/redux/api/authApi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Search from "./Search";
-// import { Navigate } from "react-router-dom";
-// import { HiOutlineShoppingBag } from "react-icons/hi2";
-// import {
-//   AlertDialog,
-//   AlertDialogAction,
-//   AlertDialogCancel,
-//   AlertDialogContent,
-//   AlertDialogDescription,
-//   AlertDialogFooter,
-//   AlertDialogHeader,
-//   AlertDialogTitle,
-//   AlertDialogTrigger,
-// } from "@/components/ui/alert-dialog";
+import emptyCart from "../../assets/image/emptyCart.png";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { clearUser } from "@/redux/features/userSlice"
 
 const Header = () => {
   const { isLoading } = useGetMeQuery();
@@ -37,15 +37,23 @@ const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const logoutHandler = (e) => {
-    logout();
-    navigate(0);
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      navigate("/");
+    }
+  }, []);
+
+  const logoutHandler = async (e) => {
+    await logout();
+    dispatch(clearUser()); // Clear the user state
+    navigate("/"); // Navigate to the home page
   };
 
-  // const itemHandler = (e) => {
-  //   navigate('/');
-  // }
+  const itemHandler = (e) => {
+    navigate("/search");
+  };
 
   return (
     <section className="pt-[3px] sm:px-[40px] px-[20px] shadow">
@@ -53,42 +61,51 @@ const Header = () => {
         <Link to="/" className="font-bold">
           UrbanHub
         </Link>
-        <Search/>
+        <Search />
         <div className="flex gap-4 items-center">
-          <Link to="/cart">
-          {/* <AlertDialog> */}
+          <AlertDialog>
             <div className="flex ">
-            {/* <AlertDialogTrigger> */}
-              <i className="ri-shopping-bag-line text-[2rem]"></i>
-              {/* </AlertDialogTrigger> */}
+              <AlertDialogTrigger asChild>
+                <Link to="/cart">
+                  <i className="ri-shopping-bag-line text-[2rem]"></i>
+                </Link>
+              </AlertDialogTrigger>
               {cartItems.length > 0 ? (
                 <span className="w-5 h-5 ml-[-17px] mb-2 text-[13px] text-center bg-[#FF1493] text-white font-semibold rounded-xl">
                   {cartItems.length}
                 </span>
-              ) : ( ""
-      
-                  // <AlertDialogContent>
-                  //   <AlertDialogHeader>
-                  //     <AlertDialogTitle>
-                  //       No item in cart
-                  //     </AlertDialogTitle>
-                  //   </AlertDialogHeader>
-                  //   <AlertDialogFooter>
-                  //     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  //     <Button onClick={itemHandler}>Continue</Button>
-                  //   </AlertDialogFooter>
-                  // </AlertDialogContent>
+              ) : (
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogDescription>
+                      <img src={emptyCart} alt="" />
+                    </AlertDialogDescription>
+                    <AlertDialogTitle className="text-center">No item in cart !</AlertDialogTitle>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter className="flex items-center justify-center">
+                    <AlertDialogAction onClick={itemHandler}>
+                      <i className="ri-shopping-bag-line p-2"></i> Add Item
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
               )}
             </div>
-            {/* </AlertDialog> */}
-          </Link>
+          </AlertDialog>
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar>
-                  <AvatarImage src={user?.avatar ? user?.avatar?.url : "no image"} />
+                  <AvatarImage
+                    src={
+                      user?.avatar
+                        ? user?.avatar?.url
+                        : "https://github.com/shadcn.png"
+                    }
+                  />
                   <AvatarFallback>
-                    {user?.avatar ? user?.avatar?.url : "no image"}
+                    {user?.avatar
+                      ? user?.avatar?.url
+                      : "https://github.com/shadcn.png"}
                   </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>

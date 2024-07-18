@@ -33,7 +33,7 @@ const Register = () => {
 
   const { name, email, password } = user;
 
-  const [register, { error, data, isLoading }] = useRegisterMutation();
+  const [register, { error, data,isSuccess, isLoading }] = useRegisterMutation();
   const navigate = useNavigate();
   const { isAuthenticated } = useSelector((state) => state.auth);
 
@@ -42,11 +42,16 @@ const Register = () => {
     if(isAuthenticated){
       navigate("/");
     }
+    if(isSuccess){
+      console.log(data);
+      navigate("/login");
+      toast.success("Account has been created")
+    }
     if (error) {
       toast.error(error?.data?.message);
     }
   
-  }, [error,isAuthenticated]);
+  }, [error,isSuccess,isAuthenticated]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -95,6 +100,7 @@ const Register = () => {
                 <Input
                   id="password"
                   name="password"
+                  type="password"
                   placeholder="Enter Your Password"
                   value={password}
                   onChange={onChange}

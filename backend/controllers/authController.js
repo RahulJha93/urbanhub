@@ -14,7 +14,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
   const { name, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  if(password.length < 6) {
+  if (password.length < 6) {
     return next(new ErrorHandler("Please Enter Password greater than 6 ", 400));
   }
 
@@ -44,10 +44,8 @@ const loginUser = asyncHandler(async (req, res, next) => {
   if (!passwordMatch) {
     return next(new ErrorHandler("Invalid Email or Password", 401));
   }
-  
+
   sendToken(user, 200, res);
-
-
 });
 
 //logout a user => api/v1/logout
@@ -58,9 +56,10 @@ const logout = asyncHandler(async (req, res) => {
     httpOnly: true,
   });
 
-  res.status(200).json({
+  res.clearCookie("token").status(200).json({
     message: "Logout successfully",
   });
+
 });
 
 //upload user avatar => api/v1/me/upload_avatar
@@ -72,22 +71,23 @@ const uploadAvatar = asyncHandler(async (req, res) => {
   const b64 = Buffer.from(req.file.buffer).toString("base64");
   let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
 
-  const avatarResponse = await uploadFiles(dataURI,"URBANHUB-ECOMMERCE/AVATARS");
-  
+  const avatarResponse = await uploadFiles(
+    dataURI,
+    "URBANHUB-ECOMMERCE/AVATARS"
+  );
+
   console.log(req.file);
   console.log("=========");
   console.log(avatarResponse);
 
-  const user = await User.findByIdAndUpdate(req?.user?._id,{
-    avatar:avatarResponse,
+  const user = await User.findByIdAndUpdate(req?.user?._id, {
+    avatar: avatarResponse,
   });
   console.log(user);
 
   res.status(200).json({
     user,
   });
-
-  
 });
 
 //forgot password
@@ -169,7 +169,6 @@ const resetPassword = asyncHandler(async (req, res, next) => {
 //Get current user profiles =>/api/v1/me
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req?.user?.id);
-  
 
   res.status(200).json({
     user,
@@ -257,7 +256,7 @@ const deleteUser = asyncHandler(async (req, res, next) => {
   }
   await user.deleteOne();
   res.status(200).json({
-    success:true,
+    success: true,
   });
 });
 module.exports = {

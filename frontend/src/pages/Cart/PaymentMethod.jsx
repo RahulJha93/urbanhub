@@ -73,7 +73,7 @@ const PaymentMethod = () => {
         itemsPrice: itemPrice,
         shippingAmount: parseInt(shippingTotal),
         taxAmount: taxPrice,
-        totalAmount: shippingPrice,
+        totalAmount: parseInt(shippingTotal)+taxPrice,
       };
       console.log(orderData);
       stripeCheckoutSession(orderData);
