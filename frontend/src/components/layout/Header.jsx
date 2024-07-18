@@ -30,6 +30,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { clearUser } from "@/redux/features/userSlice"
+import { toast } from "sonner"; //added toast
 
 const Header = () => {
   const { isLoading } = useGetMeQuery();
@@ -48,6 +49,7 @@ const Header = () => {
   const logoutHandler = async (e) => {
     await logout();
     dispatch(clearUser()); // Clear the user state
+    toast.success("Logout Successfully")
     navigate("/"); // Navigate to the home page
   };
 

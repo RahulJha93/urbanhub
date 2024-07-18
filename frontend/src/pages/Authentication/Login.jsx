@@ -29,7 +29,6 @@ const Login = () => {
     //   navigate("/");
     // }
     if(data && isAuthenticated){
-      console.log(data)
       toast.success("Logined")
       navigate("/");
     }
