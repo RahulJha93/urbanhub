@@ -5,12 +5,15 @@ import { Navigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated,loading } = useSelector((state) => state.auth);
+  const { isAuthenticated,loading,user } = useSelector((state) => state.auth);
+  
   if(loading){
     return <Loader />;
   }
-  if (!isAuthenticated) {
-    // toast.error( "Please login first")
+  if (!isAuthenticated ) {
+    return <Navigate to="/login" replace />;
+  }
+  if (!user ) {
     return <Navigate to="/login" replace />;
   }
 
