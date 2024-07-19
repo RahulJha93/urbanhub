@@ -26,7 +26,7 @@ const ExResetPass = () => {
       }
 
       try {
-          await axios.put(`http://localhost:8000/api/v1/password/reset/${token}`, { password,confirmPassword});
+          await axios.put(`https://urbanhub-90b4.onrender.com/api/v1/password/reset/${token}`, { password,confirmPassword});
           toast.success('Password reset successful');
       } catch (error) {
         console.log(error);
