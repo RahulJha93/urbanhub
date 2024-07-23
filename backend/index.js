@@ -25,7 +25,7 @@ const port = process.env.PORT || 8000;
 
 connectDB();
 app.use(bodyParser.json());
-app.use(cors({ origin: "https://urbanhub.netlify.app", credentials: true }));
+app.use(cors({ origin: "https://urbanhub.vercel.app/", credentials: true, optionSuccessStatus: 200 }));
 app.use(
   express.json({
     limit: "10mb",

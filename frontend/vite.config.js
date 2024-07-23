@@ -5,7 +5,7 @@ import http from "https";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(),],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -13,7 +13,7 @@ export default defineConfig({
     server: {
       proxy: {
         '/api': {
-          target: 'http://localhost:8000',
+          target: 'https://urbanhub-90b4.onrender.com',
           changeOrigin: true,
           secure: false,
           agent: new http.Agent(),
