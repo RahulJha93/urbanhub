@@ -26,7 +26,9 @@ const port = process.env.PORT || 8000;
 const allowedOrigins = ["https://urbanhub.vercel.app", "http://localhost:5173"];
 
 connectDB();
+
 app.use(bodyParser.json());
+
 app.use(cors({
   origin: (origin, callback) => {
     if (allowedOrigins.includes(origin) || !origin) {
@@ -45,7 +47,17 @@ app.use(
     limit: "10mb",
   })
 );
-app.use(cookieParser());
+const options = {
+  expires: new Date(
+    Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000
+  ),
+  httpOnly: true,
+  secure: true, // Set to true if your using https
+  sameSite: 'None', // Allows cross-site cookies
+  credentials:"include"
+
+};
+app.use(cookieParser(options));
 
 //Import all routes
 const products = require("./routes/products.js");
