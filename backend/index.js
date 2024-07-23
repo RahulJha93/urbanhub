@@ -23,14 +23,23 @@ const connectDB = require("./config/dbConnection.js");
 const app = express();
 const port = process.env.PORT || 8000;
 
+const allowedOrigins = ["https://urbanhub.vercel.app", "http://localhost:5173"];
+
 connectDB();
 app.use(bodyParser.json());
 app.use(cors({
-  origin: "https://urbanhub.vercel.app",
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
 app.use(
   express.json({
     limit: "10mb",
