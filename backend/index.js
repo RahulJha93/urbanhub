@@ -25,7 +25,12 @@ const port = process.env.PORT || 8000;
 
 connectDB();
 app.use(bodyParser.json());
-app.use(cors({ origin: "https://urbanhub.vercel.app/", credentials: true, optionSuccessStatus: 200 }));
+app.use(cors({
+  origin: "https://urbanhub.vercel.app",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(
   express.json({
     limit: "10mb",
