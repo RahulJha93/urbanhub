@@ -12,7 +12,6 @@ const sendToken = (user, statusCode, res) => {
     httpOnly: true,
     secure: true, // Set to true if your using https
     sameSite: 'None', // Allows cross-site cookies
-    // secure: process.env.NODE_ENV === 'PRODUCTION',
     credentials:"include"
 
   };
