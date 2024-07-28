@@ -50,9 +50,9 @@ const Header = () => {
   const logoutHandler = async (e) => {
     await logout();
     dispatch(clearUser()); // Clear the user state
-    Cookies.remove(document.cookie)
+   console.log(document.cookie)
     Cookies.remove("token")
-    Cookies.remove(document.cookie)
+    console.log(document.cookie)
     toast.success("Logout Successfully")
     navigate("/"); // Navigate to the home page
   };
