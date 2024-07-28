@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { clearUser } from "@/redux/features/userSlice"
 import { toast } from "sonner"; //added toast
+import Cookies from 'js-cookie'
 
 const Header = () => {
   const { isLoading } = useGetMeQuery();
@@ -49,6 +50,9 @@ const Header = () => {
   const logoutHandler = async (e) => {
     await logout();
     dispatch(clearUser()); // Clear the user state
+    Cookies.remove(document.cookie)
+    Cookies.remove("token")
+    Cookies.remove(document.cookie)
     toast.success("Logout Successfully")
     navigate("/"); // Navigate to the home page
   };
