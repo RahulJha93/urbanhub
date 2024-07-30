@@ -80,7 +80,7 @@ const Register = () => {
                 <Input
                   id="name"
                   name="name"
-                  placeholder=" Enter Your Email"
+                  placeholder=" Enter Your Name"
                   value={name}
                   onChange={onChange}
                 />
@@ -90,7 +90,7 @@ const Register = () => {
                 <Input
                   id="email"
                   name="email"
-                  placeholder="Enter Your Password"
+                  placeholder="Enter Your Email"
                   value={email}
                   onChange={onChange}
                 />

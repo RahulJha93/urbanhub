@@ -2,6 +2,8 @@ import { PRODUCT_CATEGORIES } from "@/constant/constant";
 import { getPriceQueryParams } from "@/helper/helper";
 import React, { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { Button } from "../ui/button";
+
 
 const RATINGS = [1, 2, 3, 4, 5];
 
@@ -73,10 +75,8 @@ const Filters = () => {
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
-
-        <button className="mt-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Go
-        </button>
+        <Button className="mt-2"> GO </Button>
+       
       </form>
       <div>
         <label className="block text-sm font-medium text-gray-700">

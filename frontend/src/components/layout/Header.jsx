@@ -120,9 +120,9 @@ const Header = () => {
                   {user?.name}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                {/* <DropdownMenuItem>
                   <Link to="/admin/dashboard">Dashboard</Link>
-                </DropdownMenuItem>
+                </DropdownMenuItem> */}
                 <DropdownMenuItem>
                   <Link to="/me/orders">Order</Link>
                 </DropdownMenuItem>
@@ -130,7 +130,7 @@ const Header = () => {
                   <Link to="/me/profile">Profile</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  className="text-[red]"
+                  className="text-[red] cursor-pointer hover:text-[red] "
                   onClick={logoutHandler}
                 >
                   Logout

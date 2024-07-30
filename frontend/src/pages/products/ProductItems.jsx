@@ -5,7 +5,7 @@ import {
   useSubmitReviewsMutation,
 } from "@/redux/api/productsApi";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 import Loader from "@/components/Loader/Loader";
 import { toast, Toaster } from "sonner";
@@ -24,6 +24,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import ListReviews from "../Reviews/ListReviews";
+
 
 const ProductItems = () => {
   const params = useParams();
@@ -152,13 +153,13 @@ const ProductItems = () => {
             </span>
             <div>
               <h1 className="font-semibold mt-[10px] mb-[4px]">
-                {data?.product?.price}
+                Rs {data?.product?.price}
               </h1>
               <div className="flex mb-3 gap-2 items-center justify-center sm:justify-start">
                 <Button onClick={decreaseQty}>-</Button>
                 <input
                   type="number"
-                  className="count w-10 text-center"
+                  className="count w-10 text-end"
                   value={qty}
                   readOnly
                 />
@@ -226,9 +227,11 @@ const ProductItems = () => {
                   </Dialog>
                 ) : null
               ) : (
+                <Link to="/login">
                 <Button type="submit" className="">
                   Login to Post Review
                 </Button>
+                </Link>
               )}
             </div>
           </div>

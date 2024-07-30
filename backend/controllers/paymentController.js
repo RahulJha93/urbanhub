@@ -4,17 +4,30 @@ const Order = require("../models/orders");
 dotenv.config({ path: "backend/config/config.env" });
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
+function isValidURL(string) {
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;  
+  }
+}
 
 const StripeCheckOutSession = asyncHandler(async (req, res, next) => {
   const body = req?.body;
+  console.log(body)
 
   const line_items = body?.orderItems?.map((item) => {
+    const imageUrl = item?.image[0];
+  const sanitizedImageUrl = isValidURL(imageUrl) ? imageUrl : ''; // Ensure the URL is valid
+
+
     return {
       price_data: {
         currency: "INR",
         product_data: {
           name: item?.name,
-          // images:[item?.image],
+          images: sanitizedImageUrl ? [sanitizedImageUrl] : [], // Use the sanitized URL
           metadata: { productId: item?.product },
         },
         unit_amount: item?.price * 100,

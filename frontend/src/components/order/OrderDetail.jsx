@@ -155,7 +155,7 @@ const OrderDetail = () => {
                     <TableRow>
                     <TableCell className="hidden md:table-cell">
                       <img
-                        src="/placeholder.svg"
+                        src={item?.image}
                         width="64"
                         height="64"
                         alt="Product image"

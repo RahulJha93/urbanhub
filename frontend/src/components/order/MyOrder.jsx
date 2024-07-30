@@ -42,7 +42,7 @@ const MyOrder = () => {
      dispatch(clearCartItem());
      navigate("/me/orders")
     }
-  }, [error]);
+  }, [error, data, order_Success, dispatch, navigate]);
 
   if (isLoading) return <Loader />;
 
