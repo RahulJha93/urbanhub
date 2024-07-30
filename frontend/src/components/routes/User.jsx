@@ -95,9 +95,9 @@ const User = () => {
       <Route
         path="/order/success"
         element={
-          // <ProtectedRoute>
+          <ProtectedRoute>
             <Success />
-          // </ProtectedRoute>
+           </ProtectedRoute>
         }
       />
     
