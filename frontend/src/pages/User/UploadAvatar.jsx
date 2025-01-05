@@ -30,51 +30,22 @@ const UploadAvatar = () => {
   const [uploadAvatar, { isLoading, error, isSuccess }] =
     useUploadAvatarMutation();
 
-  // useEffect(() => {
-  //   if (error) {
-  //     toast.error(error?.data?.message);
-  //     // console.log(error?.data?.message);
-
-  //   }
-  //   if (isSuccess) {
-  //     toast.success("Avatar successfully uploaded");
-  //     navigate("/me/profile");
-  //   }
-  // }, [error, isSuccess, navigate]);
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!avatar) {
       toast.error("Please select an avatar to upload.");
       return;
     }
-
+    
     const formData = new FormData();
     formData.append("file", avatar);
 
-    console.log(avatar);
-    // console.log({formData:formData}); // Check if the file is appended correctly
-    const cookies = new Cookies();
-    const checkToken = cookies.get("token");
-    console.log(checkToken);
-    try {
-     const config = {
-        headers: {
-          Authorization: `Bearer ${checkToken} `,
-          "Content-Type": "multipart/form-data",
-        },
-      };
-      console.log({config})
-      await axios.put(`http://localhost:8000/api/v1/me/uploadAvatar`,formData,config);
-      toast.success("Avatar successfully uploaded");
-    } catch (error) {
-      console.log(error);
-      toast.error("Failed to upload avatar");
-    }
+
   };
 
   const onChange = (e) => {
     const file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     setAvatar(file);
     setAvatarPreview(URL.createObjectURL(file));
   };

@@ -6,9 +6,9 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_BACKEND_URL}/api/v1`,
     // baseUrl: "/api",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
     credentials: "include",
     tagTypes: ["User"],
   }),
@@ -46,9 +46,6 @@ export const userApi = createApi({
           url: "/me/uploadAvatar",
           method: "PUT",
           body,
-          headers: {
-            "Content-Type": "multipart/form-data","boundary":"MyBoundary",
-          },
         };
       },
       invalidatesTags: ["User"],
