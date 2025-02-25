@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "bash ./build.sh",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -58,7 +58,8 @@
     "sonner": "^1.4.1",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "universal-cookie": "^7.1.4"
+    "universal-cookie": "^7.1.4",
+    "vite": "^x.x.x"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
