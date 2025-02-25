@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const orderApi = createApi({
   reducerPath: "orderApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${import.meta.env.VITE_BACKEND_URL}/api/v1`,
+    baseUrl: `${import.meta.env.VITE_BACKEND_URL}/api/v1`, // base url
     headers: {
       "Content-Type": "application/json",
     },
