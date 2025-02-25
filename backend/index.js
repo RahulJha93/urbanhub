@@ -23,7 +23,7 @@ const connectDB = require("./config/dbConnection.js");
 const app = express();
 const port = process.env.PORT || 8000;
 
-const allowedOrigins = ["https://urbanhub.vercel.app", "http://localhost:5173"];
+const allowedOrigins = ["https://urbanhub.vercel.app", "http://localhost:5173", "https://urbanhub-app.netlify.app"];
 
 connectDB();
 
@@ -54,7 +54,7 @@ const options = {
   httpOnly: true,
   secure: true, // Set to true if your using https
   sameSite: 'None', // Allows cross-site cookies
-  domain:"https://urbanhub.vercel.app",
+  domain:"https://urbanhub-app.netlify.app",
   credentials:"include"
 
 };
