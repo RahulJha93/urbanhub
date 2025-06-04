@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middleware/errorMiddleware.js");
 
 // if(process.env.NODE_ENV !== "PRODUCTION"){
-dotenv.config({ path: "backend/.env" });
+dotenv.config(); // For local development, ensure .env is in the backend directory. Vercel uses dashboard env vars.
 // } //This Line is Needed when .env file is not in the root directory(URBANHUB).
 
 //handle uncaught exceptions Ex:Undefined Variable like "port is not defined"
@@ -54,11 +54,16 @@ const options = {
   httpOnly: true,
   secure: true, // Set to true if your using https
   sameSite: 'None', // Allows cross-site cookies
-  domain:"https://urbanhub-app.netlify.app",
-  credentials:"include"
+  // domain: "https://urbanhub-app.netlify.app", // Removed to support both Netlify and Vercel frontends
+  credentials: "include"
 
 };
 app.use(cookieParser(options));
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 //Import all routes
 const products = require("./routes/products.js");
@@ -74,15 +79,18 @@ app.use("/api/v1/", payments);
 //using error middleware
 app.use(errorMiddleware);
 
-const server = app.listen(port, () => {
-  console.log(`Serving running on port ${port}`);
-});
+// Vercel handles the server listening. Export the app instead.
+// const server = app.listen(port, () => {
+  // console.log(`Serving running on port ${port}`);
+// });
 
 //Handle Unhandle Promise Rejections Ex:spelling mistake in monngodb url
 process.on("unhandledRejection", (err) => {
   console.log(`Error: ${err}`);
   console.log("Shutting Server due to Unhandled Promise Rejections");
-  server.close(() => {
+  // server.close(() => {
     process.exit(1);
-  });
+  // });
 });
+
+module.exports = app; // Export the Express app for Vercel
